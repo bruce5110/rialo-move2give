@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 240">
+  <rect width="640" height="240" fill="none"/>
+  <text x="320" y="132" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="900" fill="#1c8b5a">UNICEF</text>
+  <circle cx="116" cy="120" r="58" fill="none" stroke="#1c8b5a" stroke-width="13"/>
+  <path d="M83 130c30-34 66-34 96 0" fill="none" stroke="#1c8b5a" stroke-width="12" stroke-linecap="round"/>
+</svg>
