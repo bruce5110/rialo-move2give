@@ -8,8 +8,6 @@ const types = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
-  ".jpg": "image/jpeg",
-  ".png": "image/png",
 };
 
 const server = http.createServer((request, response) => {
@@ -29,7 +27,12 @@ const server = http.createServer((request, response) => {
       return;
     }
 
-    response.writeHead(200, { "Content-Type": types[path.extname(filePath)] || "text/plain" });
+    response.writeHead(200, {
+      "Content-Type": types[path.extname(filePath)] || "text/plain",
+      "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+      "Pragma": "no-cache",
+      "Expires": "0",
+    });
     response.end(content);
   });
 });

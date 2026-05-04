@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150" role="img" aria-label="Reserved Rialo stamp">
+  <defs>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="8" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5"/>
+    </filter>
+  </defs>
+  <g fill="none" stroke="#b80f18" stroke-width="8" filter="url(#rough)">
+    <rect x="17" y="18" width="226" height="114" rx="16"/>
+    <rect x="30" y="31" width="200" height="88" rx="10" stroke-width="3"/>
+  </g>
+  <g fill="#b80f18" font-family="Arial Black, Impact, sans-serif" text-anchor="middle" filter="url(#rough)">
+    <text x="130" y="72" font-size="42" letter-spacing="3">RESERVED</text>
+    <text x="130" y="107" font-size="30" letter-spacing="5">RIALO</text>
+  </g>
+</svg>
