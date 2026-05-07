@@ -1383,6 +1383,23 @@ function updateAllJoinedCards() {
   Object.keys(challengeDetails).forEach((id) => updateJoinedCardState(id));
 }
 
+function clearWalletScopedReservations() {
+  let clearedSelectedChallenge = false;
+
+  Object.entries(challengeDetails).forEach(([id, detail]) => {
+    if (!detail?.isJoined) return;
+
+    detail.isJoined = false;
+    detail.joinedCount = Math.max(0, Number(detail.joinedCount ?? 0) - 1);
+    updateJoinedCardState(id);
+    if (id === selectedChallenge) clearedSelectedChallenge = true;
+  });
+
+  if (clearedSelectedChallenge) {
+    renderSelectedChallenge(challengeDetails[selectedChallenge]);
+  }
+}
+
 function triggerJoinSuccessEffects(id, previousJoinedCount) {
   const detail = challengeDetails[id];
   if (!detail) return;
@@ -1691,6 +1708,7 @@ async function signWalletConnection(provider, account) {
 }
 
 function setWalletConnected(account, verified = false) {
+  const hadVerifiedWallet = walletVerified;
   connectedAccount = account || "";
   walletConnected = Boolean(connectedAccount);
   walletVerified = walletConnected && verified;
@@ -1701,6 +1719,9 @@ function setWalletConnected(account, verified = false) {
   walletMenu.hidden = true;
   syncDataFlowWalletState();
   renderHistorySummary();
+  if (hadVerifiedWallet && !walletVerified) {
+    clearWalletScopedReservations();
+  }
 }
 
 async function revokeWalletPermissions() {
