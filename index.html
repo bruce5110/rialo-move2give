@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Rialo Move2Give</title>
-    <link rel="stylesheet" href="./styles.css?v=data-flow-complete-v1" />
+    <link rel="stylesheet" href="./styles.css?v=challenge-schedule-year-v1" />
   </head>
   <body>
     <div class="app-shell">
@@ -28,7 +28,7 @@
         <div class="stake-card">
           <span class="budget-label">SFS Budget</span>
           <strong class="budget-amount value-text" id="sfs-budget-amount">18.420 RIALO</strong>
-          <p id="sfs-budget-note">Gas used when committing final result on-chain.</p>
+          <p id="sfs-budget-note">RIALO tokens accumulated in the SFS budget are used for gas fees.</p>
         </div>
       </aside>
 
@@ -63,134 +63,306 @@
           <div class="hero-copy">
             <h2>Move. Earn. Give.</h2>
             <p class="hero-subtitle">
-              With Move2Give, you don?셳 just exercise ??you earn rewards.<br />
-              You give back to the world.
+              With Move2Give, your activity becomes verified value.<br />
+              Earn and Give Back for the Better World.
             </p>
-            <div class="how-flow" aria-label="How Move2Give works">
-              <div class="how-head">
-                <span>How Move2Give Works</span>
-                <b>End-to-end flow</b>
-              </div>
-              <div class="flow-cards">
-                <article>
-                  <em>1</em>
-                  <h3>Connect Fitness Data</h3>
-                  <p>Link your smartphone, Apple Watch, Strava, or Health Connect.</p>
-                </article>
-                <article>
-                  <em>2</em>
-                  <h3>Join Pool</h3>
-                  <p>Pick a challenge and deposit funds into the pool.</p>
-                </article>
-                <article>
-                  <em>3</em>
-                  <h3>Complete Missions</h3>
-                  <p>Run, swim, cycle, or finish the workout goal you selected.</p>
-                </article>
-                <article>
-                  <em>4</em>
-                  <h3>Settle & Donate</h3>
-                  <p>Rialo verifies privately, then routes payout and donation automatically.</p>
-                </article>
-              </div>
-            </div>
-
-            <div class="overview-value-grid" aria-label="Move2Give and Rialo value">
-              <section class="overview-info-block why-rialo">
-                <div class="overview-block-head">
-                  <span>Why Rialo?</span>
-                </div>
-                <div class="value-cards">
-                  <article>
-                    <h3>Real-time Web2 data</h3>
-                    <p>Fitness data updates continuously from Apple Health, Strava, and Health Connect.</p>
-                  </article>
-                  <article>
-                    <h3>Private verification</h3>
-                    <p>Raw GPS routes, heart-rate data, and health records stay hidden.</p>
-                  </article>
-                  <article>
-                    <h3>Automated settlement</h3>
-                    <p>Rewards and donations are routed automatically when challenge rules are met.</p>
-                  </article>
-                </div>
-              </section>
-            </div>
           </div>
 
-          <div class="live-card">
-            <div class="live-kicker">My Active Challenge</div>
-            <h3>14-Day Run Streak</h3>
-            <div class="challenge-progress">
-              <div>
-                <span>Challenge progress</span>
-                <b class="value-text" data-sync="overview-progress-label">Day 8 / 14</b>
-              </div>
-              <div class="progress"><span data-sync="overview-progress-bar" style="width: 57%"></span></div>
-            </div>
-            <div class="pool-total">
-              <span>Total Prize</span>
-              <strong class="value-text">400 RIALO</strong>
-              <small>Base 200 + Sponsor 200</small>
-            </div>
-            <div class="payout-split">
-              <div>
-                <span>Winner payout</span>
-                <strong class="value-text">280 RIALO</strong>
-              </div>
-              <div>
-                <span>Donation</span>
-                <strong class="value-text">120 RIALO</strong>
-              </div>
-            </div>
-            <div class="participant-list">
-              <div><span><em data-sync="overview-minji-rank">1</em><i class="avatar avatar-1"></i> Minji</span><b class="value-text" data-sync="overview-minji-streak">8 days</b></div>
-              <div class="you"><span><em data-sync="overview-you-rank">2</em><i class="avatar avatar-2"></i> You</span><b class="value-text" data-sync="overview-you-streak">7 days</b></div>
-              <div><span><em data-sync="overview-joon-rank">2</em><i class="avatar avatar-3"></i> Joon</span><b class="value-text" data-sync="overview-joon-streak">7 days</b></div>
-              <div><span><em>4</em><i class="avatar avatar-4"></i> Sarah</span><b>6 days</b></div>
-              <div><span><em>4</em><i class="avatar avatar-5"></i> Dika</span><b>6 days</b></div>
-              <div><span><em>6</em><i class="avatar avatar-6"></i> Leo</span><b>5 days</b></div>
-              <div><span><em>7</em><i class="avatar avatar-7"></i> Amy</span><b>4 days</b></div>
-              <div><span><em>7</em><i class="avatar avatar-8"></i> Nova</span><b>4 days</b></div>
-              <div><span><em>9</em><i class="avatar avatar-9"></i> Riko</span><b>3 days</b></div>
-              <div class="missed"><span><em>10</em><i class="avatar avatar-10"></i> Alex</span><b>2 days</b></div>
-            </div>
-          </div>
+          <div class="overview-main-grid">
+            <div class="overview-service-column">
+              <div class="service-overview-card" aria-label="Move2Give service overview visual">
+                <div class="story-cue overview-story-cue" aria-label="Move2Give product flow">
+                  <span>Move</span><i>→</i><span>Verify Privately</span><i>→</i><span>Settle On-chain</span><i>→</i><span>Create Impact</span>
+                </div>
+                <div class="service-overview-labels" aria-hidden="true">
+                  <span>Real World</span>
+                  <span>Rialo M2G</span>
+                  <span>Blockchain</span>
+                  <i class="label-flow label-flow-left"><b>101001</b></i>
+                  <i class="label-flow label-flow-right"><b>011010</b></i>
+                </div>
+                <div class="service-overview-visual">
+                  <div class="animated-m2g-flow" aria-label="Real-world activity flows into Rialo M2G, then splits into earn and give outputs">
+                  <div class="flow-region real-world-region">
+                    <div class="activity-icons">
+                      <span class="mini-signal timer-icon">
+                        <svg viewBox="0 0 48 48" aria-hidden="true">
+                          <circle cx="24" cy="25" r="14" />
+                          <path d="M24 25 L24 16" />
+                          <path d="M24 25 L31 29" />
+                          <path d="M19 8 H29" />
+                          <path d="M24 8 V11" />
+                        </svg>
+                      </span>
+                      <span class="mini-signal compass-icon">
+                        <svg viewBox="0 0 48 48" aria-hidden="true">
+                          <circle cx="24" cy="24" r="15" />
+                          <path d="M29.5 15.5 L25.5 26 L18.5 32.5 L22.5 22 Z" />
+                          <circle cx="24" cy="24" r="2" />
+                        </svg>
+                      </span>
+                      <span class="mini-signal heart-icon">
+                        <svg viewBox="0 0 48 48" aria-hidden="true">
+                          <path d="M24 36 C16 29 11 24 11 18.5 C11 14.5 14 12 17.8 12 C20.2 12 22.2 13.3 24 15.4 C25.8 13.3 27.8 12 30.2 12 C34 12 37 14.5 37 18.5 C37 24 32 29 24 36 Z" />
+                          <path d="M15 25 H20 L22 21 L25 29 L28 24 H33" />
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="athlete-stage">
+                      <div class="athlete runner">
+                        <svg class="activity-svg runner-svg" viewBox="0 0 96 96" role="img" aria-label="Running figure">
+                          <circle class="figure-head" cx="47" cy="18" r="8" />
+                          <path class="figure-body" d="M45 28 L36 48 L52 54" />
+                          <path class="runner-arm arm-front" d="M41 36 L26 31" />
+                          <path class="runner-arm arm-back" d="M43 38 L57 32" />
+                          <path class="runner-leg leg-front" d="M52 54 L72 69" />
+                          <path class="runner-leg leg-back" d="M47 53 L32 74" />
+                          <path class="motion-line" d="M18 78 C34 72 50 73 78 79" />
+                        </svg>
+                        <b>Run</b>
+                      </div>
+                      <div class="athlete cyclist">
+                        <svg class="activity-svg cyclist-svg" viewBox="0 0 118 92" role="img" aria-label="Cycling figure">
+                          <circle class="bike-wheel wheel-left" cx="30" cy="66" r="16" />
+                          <circle class="bike-wheel wheel-right" cx="86" cy="66" r="16" />
+                          <path class="bike-frame" d="M30 66 L50 43 L62 66 L42 66 L57 43 L86 66" />
+                          <path class="bike-bar" d="M70 42 L88 39" />
+                          <circle class="pedal-center" cx="58" cy="62" r="4" />
+                          <path class="pedal-crank crank-a" d="M58 62 L48 54" />
+                          <path class="pedal-crank crank-b" d="M58 62 L68 70" />
+                          <g class="cyclist-rider">
+                            <circle class="figure-head" cx="58" cy="21" r="7" />
+                            <path class="figure-body" d="M56 29 L50 43 L67 44" />
+                            <path class="rider-arm" d="M66 44 L86 39" />
+                            <path class="rider-leg leg-a" d="M51 44 L58 62 L48 54" />
+                            <path class="rider-leg leg-b" d="M53 45 L58 62 L68 70" />
+                          </g>
+                        </svg>
+                        <b>Cycle</b>
+                      </div>
+                      <div class="athlete swimmer">
+                        <svg class="activity-svg swimmer-svg" viewBox="0 0 118 86" role="img" aria-label="Swimming figure">
+                          <path class="wave wave-a" d="M10 63 C22 56 34 70 46 63 C59 56 71 70 84 63 C96 57 104 61 110 66" />
+                          <path class="wave wave-b" d="M16 75 C28 69 38 80 51 75 C64 69 75 80 90 75" />
+                          <circle class="figure-head" cx="35" cy="37" r="8" />
+                          <path class="swim-body" d="M42 43 C58 42 74 48 90 57" />
+                          <path class="swim-arm arm-stroke" d="M45 43 C58 28 76 25 96 33" />
+                          <path class="swim-arm arm-recovery" d="M48 47 C62 57 77 61 94 61" />
+                        </svg>
+                        <b>Swim</b>
+                      </div>
+                    </div>
+                    <div class="wearable-node">
+                      <span class="device-phone">
+                        <svg viewBox="0 0 54 76" aria-hidden="true">
+                          <rect x="10" y="5" width="34" height="66" rx="10" />
+                          <path d="M22 12 H32" />
+                          <rect class="device-screen" x="15" y="17" width="24" height="42" rx="6" />
+                          <path class="device-wave" d="M18 39 H22 L24 33 L29 47 L32 39 H36" />
+                        </svg>
+                      </span>
+                      <span class="device-watch">
+                        <svg viewBox="0 0 58 76" aria-hidden="true">
+                          <path class="watch-strap" d="M22 5 H36 L38 19 H20 Z" />
+                          <rect x="12" y="18" width="34" height="40" rx="10" />
+                          <path class="watch-strap" d="M20 57 H38 L36 71 H22 Z" />
+                          <rect class="device-screen" x="18" y="25" width="22" height="25" rx="7" />
+                          <path class="watch-heart" d="M29 43 C24 39 22 36 22 33.5 C22 31.4 23.5 30 25.5 30 C27 30 28.1 30.8 29 32 C29.9 30.8 31 30 32.5 30 C34.5 30 36 31.4 36 33.5 C36 36 34 39 29 43 Z" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
 
-          <div class="overview-bottom" aria-label="Rialo execution and privacy summary">
-            <section class="overview-info-block execution-preview">
-              <div class="overview-block-head">
-                <span>Live Execution Preview</span>
-              </div>
-              <div class="preview-flow">
-                <div><b>Native webCall</b><small>Fetch real-world fitness data</small></div>
-                <div><b>IPC</b><small>Protect private inputs</small></div>
-                <div><b>TEE</b><small>Verify without exposing raw health data</small></div>
-                <div><b>REX</b><small>Update challenge state</small></div>
-                <div><b>On-chain Result</b><small>Publish verified outcome only</small></div>
-              </div>
-            </section>
+                  <div class="flow-region rialo-region">
+                    <div class="verification-hub">
+                      <span class="hub-orbit"></span>
+                      <span class="hub-orbit secondary"></span>
+                      <div class="binary-rain" aria-hidden="true">
+                        <span>1010</span>
+                        <span>011</span>
+                        <span>1101</span>
+                        <span>001</span>
+                        <span>10</span>
+                        <span>0101</span>
+                        <span>111</span>
+                        <span>1001</span>
+                        <span>01</span>
+                        <span>101</span>
+                      </div>
+                      <div class="hub-logo">
+                        <span class="hub-logo-layer depth-back"></span>
+                        <span class="hub-logo-layer depth-mid"></span>
+                        <span class="hub-logo-layer face"></span>
+                      </div>
+                      <span class="verify-chip chip-privacy">
+                        <svg viewBox="0 0 36 36" aria-hidden="true">
+                          <path d="M18 5 L28 9 V17 C28 24 23.6 28.4 18 31 C12.4 28.4 8 24 8 17 V9 Z" />
+                          <path d="M14 17 H22" />
+                          <path d="M14 22 H20" />
+                        </svg>
+                        Privacy
+                      </span>
+                      <span class="verify-chip chip-verified">
+                        <svg viewBox="0 0 36 36" aria-hidden="true">
+                          <circle cx="18" cy="18" r="13" />
+                          <path d="M12 18.5 L16.5 23 L25 13.5" />
+                        </svg>
+                        Verified
+                      </span>
+                    </div>
+                  </div>
 
-            <section class="overview-info-block privacy-promise">
-              <div class="overview-block-head">
-                <span>What stays private</span>
+                  <div class="flow-region blockchain-region">
+                    <div class="output-card earn-output">
+                      <span class="output-icon coin-stack">
+                        <svg viewBox="0 0 80 80" aria-hidden="true">
+                          <defs>
+                            <radialGradient id="m2gCoinGradient" cx="38%" cy="30%" r="72%">
+                              <stop offset="0%" stop-color="#f8fff9" />
+                              <stop offset="48%" stop-color="#8ee8d0" />
+                              <stop offset="100%" stop-color="#17b894" />
+                            </radialGradient>
+                          </defs>
+                          <g class="upright-coin coin-one">
+                            <circle class="coin-main" cx="28" cy="29" r="18" />
+                            <circle class="coin-ring" cx="28" cy="29" r="12" />
+                            <path class="coin-shine-line" d="M20 22 C26 18 33 19 37 24" />
+                            <image class="coin-rialo-mark" href="./assets/rialo-logo-small.png" x="19" y="20" width="18" height="18" preserveAspectRatio="xMidYMid meet" />
+                          </g>
+                          <g class="upright-coin coin-two">
+                            <circle class="coin-main" cx="52" cy="29" r="18" />
+                            <circle class="coin-ring" cx="52" cy="29" r="12" />
+                            <path class="coin-shine-line" d="M44 22 C50 18 57 19 61 24" />
+                            <image class="coin-rialo-mark" href="./assets/rialo-logo-small.png" x="43" y="20" width="18" height="18" preserveAspectRatio="xMidYMid meet" />
+                          </g>
+                          <g class="upright-coin coin-three">
+                            <circle class="coin-main" cx="40" cy="53" r="19" />
+                            <circle class="coin-ring" cx="40" cy="53" r="13" />
+                            <path class="coin-shine-line" d="M31 45 C38 41 46 42 51 47" />
+                            <image class="coin-rialo-mark" href="./assets/rialo-logo-small.png" x="30" y="43" width="20" height="20" preserveAspectRatio="xMidYMid meet" />
+                          </g>
+                        </svg>
+                      </span>
+                      <div class="earn-text">
+                        <strong>Earn</strong>
+                        <small>Wallet reward</small>
+                      </div>
+                    </div>
+                    <div class="output-card give-output">
+                      <span class="output-icon ngo-stack" aria-hidden="true"></span>
+                      <div class="ngo-logo-group" aria-hidden="true">
+                        <img class="ngo-logo unicef" src="./assets/ngo-unicef.svg" alt="" />
+                        <img class="ngo-logo redcross" src="./assets/ngo-red-cross.svg" alt="" />
+                        <img class="ngo-logo greenpeace" src="./assets/ngo-greenpeace.svg" alt="" />
+                      </div>
+                      <div class="give-text">
+                        <strong>Give</strong>
+                        <small>Donation</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <svg class="flow-connections" viewBox="0 0 1000 520" aria-hidden="true" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="m2gFlowGradient" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#8ee8d0" stop-opacity="0.35" />
+                        <stop offset="44%" stop-color="#17b894" stop-opacity="0.95" />
+                        <stop offset="100%" stop-color="#4bb7d8" stop-opacity="0.45" />
+                      </linearGradient>
+                    </defs>
+                    <path class="flow-base" d="M300 246 C354 225 405 236 456 258" />
+                    <path class="flow-base" d="M552 238 C622 192 681 158 748 156" />
+                    <path class="flow-base" d="M552 300 C622 344 681 384 748 386" />
+                    <path class="flow-active flow-a" d="M300 246 C354 225 405 236 456 258" />
+                    <path class="flow-active flow-b" d="M552 238 C622 192 681 158 748 156" />
+                    <path class="flow-active flow-c" d="M552 300 C622 344 681 384 748 386" />
+                    <circle class="flow-dot dot-a" r="5">
+                      <animateMotion dur="3s" repeatCount="indefinite" path="M300 246 C354 225 405 236 456 258" />
+                    </circle>
+                    <circle class="flow-dot dot-a dot-delay" r="4">
+                      <animateMotion dur="3s" begin="1.1s" repeatCount="indefinite" path="M300 246 C354 225 405 236 456 258" />
+                    </circle>
+                    <circle class="flow-dot dot-b" r="5">
+                      <animateMotion dur="3.2s" begin="0.25s" repeatCount="indefinite" path="M552 238 C622 192 681 158 748 156" />
+                    </circle>
+                    <circle class="flow-dot dot-c" r="5">
+                      <animateMotion dur="3.2s" begin="0.6s" repeatCount="indefinite" path="M552 300 C622 344 681 384 748 386" />
+                    </circle>
+                  </svg>
+                  </div>
               </div>
-              <div class="privacy-compare">
+              </div>
+
+              <div class="live-feedback" aria-label="Live Move2Give feedback feed">
+                <div class="feedback-title">Live Feed</div>
+                <div class="live-feed-inner">
+                  <div class="feed-item">🏃 James completed 8km run</div>
+                  <div class="feed-item">💸 Tomas donated 100 RIALO to UNICEF</div>
+                  <div class="feed-item">🏊 Maria joined 10km swim challenge</div>
+                  <div class="feed-item">🚴 Alex completed 15km cycle</div>
+                  <div class="feed-item">🌱 Emma donated 50 RIALO to Greenpeace</div>
+                  <div class="feed-item">🚴 Lucas completed 12km cycling</div>
+                  <div class="feed-item">💸 Sophia donated 75 RIALO to Red Cross</div>
+                  <div class="feed-item">🏃 Daniel joined 14-Day Run Streak</div>
+                  <div class="feed-item">🏃 James completed 8km run</div>
+                  <div class="feed-item">💸 Tomas donated 100 RIALO to UNICEF</div>
+                  <div class="feed-item">🏊 Maria joined 10km swim challenge</div>
+                  <div class="feed-item">🚴 Alex completed 15km cycle</div>
+                  <div class="feed-item">🌱 Emma donated 50 RIALO to Greenpeace</div>
+                  <div class="feed-item">🚴 Lucas completed 12km cycling</div>
+                  <div class="feed-item">💸 Sophia donated 75 RIALO to Red Cross</div>
+                  <div class="feed-item">🏃 Daniel joined 14-Day Run Streak</div>
+                </div>
+                <p class="service-privacy-note">No raw health data is exposed. Only verified results and impact outcomes are recorded.</p>
+              </div>
+            </div>
+
+            <div class="overview-impact-card impact-panel">
+              <div class="live-kicker impact-header">Your Impact So Far</div>
+              <p data-overview-impact-message>Your movement has already created real value.</p>
+              <div class="impact-score-grid">
+                <div class="impact-score-card earn-score-card">
+                  <div class="impact-score-label">Personal Impact</div>
+                  <div class="impact-title">🔥 Earn Score</div>
+                  <div class="impact-value"><span class="score-number">82</span></div>
+                  <div class="impact-sub">Top 12% Earner</div>
+                </div>
+                <div class="impact-score-card donation-score-card">
+                  <div class="impact-score-label">Social Impact</div>
+                  <div class="impact-title">🌱 Donation Score</div>
+                  <div class="impact-value"><span class="score-number">65</span></div>
+                  <div class="impact-sub">Top 8% Donor</div>
+                </div>
+              </div>
+              <div class="impact-message">Your activity creates both personal rewards and real-world impact.</div>
+              <div class="impact-supported">
+                <span>You supported:</span>
                 <div>
-                  <strong>Public</strong>
-                  <span>Rank</span>
-                  <span>Streak</span>
-                  <span>Completed yes/no</span>
-                </div>
-                <div>
-                  <strong>Hidden</strong>
-                  <span>GPS route</span>
-                  <span>Raw heart-rate</span>
-                  <span>Full workout logs</span>
+                  <b>UNICEF</b>
+                  <b>Red Cross</b>
+                  <b>Greenpeace</b>
                 </div>
               </div>
-            </section>
+              <div class="overview-impact-list" data-overview-impact-list>
+                <div class="overview-impact-row earned">
+                  <span>Total Earned</span>
+                  <strong class="value-text overview-impact-value locked" data-impact-total="earned">Connect wallet</strong>
+                  <small>Earned from verified activity</small>
+                </div>
+                <div class="overview-impact-row donated">
+                  <span>Total Donated</span>
+                  <strong class="value-text overview-impact-value locked" data-impact-total="donated">Connect wallet</strong>
+                  <small>Donated automatically</small>
+                </div>
+                <div class="overview-impact-row spent">
+                  <span>Total Spent</span>
+                  <strong class="value-text overview-impact-value locked" data-impact-total="spent">Connect wallet</strong>
+                  <small>Used for challenge entries</small>
+                </div>
+              </div>
+            </div>
           </div>
+
         </section>
 
         <section class="panel" id="activity">
@@ -206,8 +378,11 @@
               <div class="execution-head">
                 <div>
                   <span class="eyebrow">Rialo Live Execution Center</span>
+                  <div class="story-cue dashboard-story-cue">
+                    <span>Live Verification</span><i>→</i><span>Ranking</span><i>→</i><span>Settlement</span><i>→</i><span>Donation</span>
+                  </div>
                   <div class="current-challenge-title">
-                    <h3>Current Challenge: 14-Day Run Streak</h3>
+                    <h3>Current Challenge: 14-Day Run Streak <span class="challenge-date-range">(May 13, 2026 ~ May 27, 2026)</span></h3>
                     <span class="reward-rule-badge rule-top3">Top 3 Share the Pool</span>
                   </div>
                   <p>Real-time fitness data updates challenge status automatically.</p>
@@ -232,9 +407,9 @@
                     <span id="condition-subtitle">Receiving real-time fitness updates</span>
                   </div>
                   <div class="verification-metrics">
-                    <span><b id="distance-value" class="live-value value-text">2.56 km</b> Distance</span>
-                    <span><b id="time-value" class="live-value value-text">22min 39sec</b> Time</span>
-                    <span><b id="streak-value" class="live-value value-text" data-sync="dashboard-stream-streak">7 days</b> Streak</span>
+                    <span><b id="distance-value" class="live-value value-text">2.56 km</b><small>Distance</small></span>
+                    <span><b id="time-value" class="live-value value-text">22min 39sec</b><small>Time</small></span>
+                    <span><b id="streak-value" class="live-value value-text" data-sync="dashboard-stream-streak">7 days</b><small>Streak</small></span>
                   </div>
                   <div class="proof-strip">
                     <span>Apple Health synced</span>
@@ -273,6 +448,20 @@
                       <em>5</em>
                       <span>On-chain Result</span>
                       <p>Publishing verified result only.</p>
+                    </div>
+                  </div>
+                  <div class="execution-engine" aria-label="Rialo execution engine status">
+                    <div class="execution-engine-head">
+                      <span>Execution Engine</span>
+                      <b id="engine-active-message">Fetching real-world fitness data...</b>
+                    </div>
+                    <div class="live-processing-timeline" aria-label="Live Rialo processing steps">
+                      <div data-live-status-step="1"><em></em><span>Auto-fetching workout data</span></div>
+                      <div data-live-status-step="2"><em></em><span>Privately verifying condition</span></div>
+                      <div data-live-status-step="3"><em></em><span>REX updating streak and rank</span></div>
+                      <div data-live-status-step="4"><em></em><span>Preparing automatic settlement</span></div>
+                      <div data-live-status-step="5"><em></em><span>Donation route ready</span></div>
+                      <div data-live-status-step="6"><em></em><span>Verified result prepared</span></div>
                     </div>
                   </div>
                   <div class="execution-overall-progress">
@@ -359,65 +548,32 @@
                       <p>Live estimate updates with ranking. Final settlement happens when the challenge ends.</p>
                       <button class="settlement-button" id="settlement-button" type="button">Simulate Settlement</button>
                     </div>
-                    <div class="settlement-status" id="settlement-status" hidden>
-                      <strong>Final settlement simulated.</strong>
-                      <span>Wallet and donation routes confirmed.</span>
-                    </div>
                   </div>
                   <div class="current-title-row">
                     <h4>14-Day Run Streak</h4>
                     <span class="current-status-badge" id="current-status-badge" hidden>Completed</span>
                   </div>
                   <div class="progress"><span data-sync="dashboard-current-bar" style="width: 57%"></span></div>
-                  <div class="current-status-grid">
-                    <div>
-                      <small>Progress</small>
-                      <strong class="value-text" data-sync="dashboard-current-progress">Day 8 / 14</strong>
-                    </div>
-                    <div>
-                      <small>Streak</small>
-                      <strong class="value-text" data-sync="dashboard-streak">7 days</strong>
-                    </div>
-                    <div>
-                      <small>Ranking</small>
-                      <strong class="value-text" data-sync="dashboard-ranking">#2</strong>
-                    </div>
-                  </div>
                 </article>
 
                 <article class="activity-card history">
                   <span>Past History</span>
                   <div class="history-list">
-                    <button data-history-id="walk-meals" class="failed" data-ngo="Red Cross"><b>Walk for Meals <span class="history-result-badge failed">Failed</span><span class="ngo-chip">Red Cross</span></b><small>Failed · Entry 15 RIALO lost · moved to winner reward pool</small></button>
-                    <button data-history-id="swim-water" class="completed" data-ngo="Red Cross"><b>Swim for Clean Water <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Red Cross</span></b><small>Completed · Entry 25 RIALO · Final payout 42 RIALO · 7 RIALO donated</small></button>
-                    <button data-history-id="morning-run" class="completed" data-ngo="Greenpeace"><b>Morning Run Sprint <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Greenpeace</span></b><small>Completed · Entry 10 RIALO · Final payout 28 RIALO · 5 RIALO donated</small></button>
-                    <button data-history-id="weekend-cycling" class="completed" data-ngo="UNICEF"><b>Weekend Cycling Pool <span class="history-result-badge completed">Completed</span><span class="ngo-chip">UNICEF</span></b><small>Completed · Entry 30 RIALO · Final payout 35 RIALO · 5 RIALO donated</small></button>
-                    <button data-history-id="night-walk" class="completed"><b>Night Walk Crew <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Red Cross</span></b><small>Completed · Entry 12 RIALO · Final payout 24 RIALO · 4 RIALO donated</small></button>
-                    <button data-history-id="morning-yoga" class="completed"><b>Morning Yoga Streak <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Greenpeace</span></b><small>Completed · Entry 18 RIALO · Final payout 33 RIALO · 6 RIALO donated</small></button>
-                    <button data-history-id="charity-5k" class="completed"><b>5K Charity Run <span class="history-result-badge completed">Completed</span><span class="ngo-chip">UNICEF</span></b><small>Completed · Entry 15 RIALO · Final payout 22 RIALO · 4 RIALO donated</small></button>
-                    <button data-history-id="step-battle" class="failed"><b>Step Battle Week <span class="history-result-badge failed">Failed</span></b><small>Failed · Entry 14 RIALO lost · moved to winner reward pool</small></button>
-                    <button data-history-id="bike-relief" class="completed"><b>Bike for Relief <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Red Cross</span></b><small>Completed · Entry 22 RIALO · Final payout 39 RIALO · 7 RIALO donated</small></button>
-                    <button data-history-id="clean-water-sprint" class="completed"><b>Clean Water Sprint <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Greenpeace</span></b><small>Completed · Entry 16 RIALO · Final payout 26 RIALO · 5 RIALO donated</small></button>
-                    <button data-history-id="lunch-run" class="failed"><b>Lunch Break Run <span class="history-result-badge failed">Failed</span></b><small>Failed · Entry 11 RIALO lost · moved to winner reward pool</small></button>
+                    <button data-history-id="walk-meals" class="failed" data-ngo="Red Cross"><b>Walk for Meals <span class="history-date-range">(May 1, 2026 ~ May 7, 2026)</span> <span class="history-result-badge failed">Failed</span><span class="ngo-chip">Red Cross</span></b><small>Failed · Entry 15 RIALO moved to winner reward pool</small></button>
+                    <button data-history-id="swim-water" class="completed" data-ngo="Red Cross"><b>Swim for Clean Water <span class="history-date-range">(April 23, 2026 ~ April 30, 2026)</span> <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Red Cross</span></b><small>Completed · Entry 25 RIALO · Final payout 42 RIALO · 7 RIALO donated</small></button>
+                    <button data-history-id="morning-run" class="completed" data-ngo="Greenpeace"><b>Morning Run Sprint <span class="history-date-range">(April 15, 2026 ~ April 22, 2026)</span> <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Greenpeace</span></b><small>Completed · Entry 10 RIALO · Final payout 28 RIALO · 5 RIALO donated</small></button>
+                    <button data-history-id="weekend-cycling" class="completed" data-ngo="UNICEF"><b>Weekend Cycling Pool <span class="history-date-range">(April 8, 2026 ~ April 14, 2026)</span> <span class="history-result-badge completed">Completed</span><span class="ngo-chip">UNICEF</span></b><small>Completed · Entry 30 RIALO · Final payout 35 RIALO · 5 RIALO donated</small></button>
+                    <button data-history-id="night-walk" class="completed"><b>Night Walk Crew <span class="history-date-range">(April 1, 2026 ~ April 7, 2026)</span> <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Red Cross</span></b><small>Completed · Entry 12 RIALO · Final payout 24 RIALO · 4 RIALO donated</small></button>
+                    <button data-history-id="morning-yoga" class="completed"><b>Morning Yoga Streak <span class="history-date-range">(March 25, 2026 ~ March 31, 2026)</span> <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Greenpeace</span></b><small>Completed · Entry 18 RIALO · Final payout 33 RIALO · 6 RIALO donated</small></button>
+                    <button data-history-id="charity-5k" class="completed"><b>5K Charity Run <span class="history-date-range">(March 18, 2026 ~ March 24, 2026)</span> <span class="history-result-badge completed">Completed</span><span class="ngo-chip">UNICEF</span></b><small>Completed · Entry 15 RIALO · Final payout 22 RIALO · 4 RIALO donated</small></button>
+                    <button data-history-id="step-battle" class="failed"><b>Step Battle Week <span class="history-date-range">(March 10, 2026 ~ March 17, 2026)</span> <span class="history-result-badge failed">Failed</span></b><small>Failed · Entry 14 RIALO moved to winner reward pool</small></button>
+                    <button data-history-id="bike-relief" class="completed"><b>Bike for Relief <span class="history-date-range">(March 3, 2026 ~ March 9, 2026)</span> <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Red Cross</span></b><small>Completed · Entry 22 RIALO · Final payout 39 RIALO · 7 RIALO donated</small></button>
+                    <button data-history-id="clean-water-sprint" class="completed"><b>Clean Water Sprint <span class="history-date-range">(February 24, 2026 ~ March 2, 2026)</span> <span class="history-result-badge completed">Completed</span><span class="ngo-chip">Greenpeace</span></b><small>Completed · Entry 16 RIALO · Final payout 26 RIALO · 5 RIALO donated</small></button>
+                    <button data-history-id="lunch-run" class="failed"><b>Lunch Break Run <span class="history-date-range">(February 17, 2026 ~ February 23, 2026)</span> <span class="history-result-badge failed">Failed</span></b><small>Failed · Entry 11 RIALO moved to winner reward pool</small></button>
                   </div>
                   <p class="reward-rule">Failed entries move to the reward pool. Successful users split rewards based on rank.</p>
                 </article>
 
-                <article class="activity-card impact">
-                  <span>Your Impact</span>
-                  <div class="impact-row earned">
-                    <small>Total Earned</small>
-                    <strong class="live-value value-text" data-impact-total="earned">0 RIALO</strong>
-                  </div>
-                  <div class="impact-row donated">
-                    <small>Total Donated</small>
-                    <strong class="live-value value-text" data-impact-total="donated">0 RIALO</strong>
-                  </div>
-                  <div class="impact-row spent">
-                    <small>Total Spent</small>
-                    <strong class="live-value value-text" data-impact-total="spent">0 RIALO</strong>
-                  </div>
-                </article>
               </div>
             </section>
           </div>
@@ -442,7 +598,7 @@
           <div class="challenge-grid sport-panel active" id="running">
             <article class="challenge-card selected" data-challenge="run-100">
               <div class="reward-rule rule-winner">Winner Takes All Pool</div>
-              <div class="challenge-period">May 21 → May 27</div>
+              <div class="challenge-period">May 21, 2026 → May 27, 2026</div>
               <h3>7-Day 100km Challenge</h3>
               <p>Reach 100km within one week.</p>
               <div class="stats">
@@ -455,7 +611,7 @@
 
             <article class="challenge-card" data-challenge="morning-run">
               <div class="reward-rule rule-top3">Top 3 Share the Pool</div>
-              <div class="challenge-period">May 25 → June 3</div>
+              <div class="challenge-period">May 25, 2026 → June 3, 2026</div>
               <h3>Morning Streak Run</h3>
               <p>Run 30 minutes BEFORE 9 AM for 10 days.</p>
               <div class="stats">
@@ -468,7 +624,7 @@
 
             <article class="challenge-card" data-challenge="night-5k">
               <div class="reward-rule rule-successors">All Successors Share Pool</div>
-              <div class="challenge-period">June 1 → June 7</div>
+              <div class="challenge-period">June 1, 2026 → June 7, 2026</div>
               <h3>Night 5K Challenge</h3>
               <p>Finish a 5km run after 7 PM within one week.</p>
               <div class="stats">
@@ -483,7 +639,7 @@
           <div class="challenge-grid sport-panel" id="swimming">
             <article class="challenge-card" data-challenge="swim-water">
               <div class="reward-rule rule-rank">Rank-weighted Rewards</div>
-              <div class="challenge-period">May 22 → May 28</div>
+              <div class="challenge-period">May 22, 2026 → May 28, 2026</div>
               <h3>7-Day Swim for Clean Water</h3>
               <p>Swim 800m or 30 minutes each day.</p>
               <div class="stats">
@@ -496,7 +652,7 @@
 
             <article class="challenge-card" data-challenge="pool-5k">
               <div class="reward-rule rule-successors">All Successors Share Pool</div>
-              <div class="challenge-period">May 29 → June 4</div>
+              <div class="challenge-period">May 29, 2026 → June 4, 2026</div>
               <h3>5K Pool Swim Week</h3>
               <p>Complete 5km in a pool within 7 days.</p>
               <div class="stats">
@@ -509,7 +665,7 @@
 
             <article class="challenge-card" data-challenge="morning-swim">
               <div class="reward-rule rule-top3">Top 3 Share the Pool</div>
-              <div class="challenge-period">June 5 → June 11</div>
+              <div class="challenge-period">June 5, 2026 → June 11, 2026</div>
               <h3>Morning Swim Sprint</h3>
               <p>Swim 400m BEFORE 8 AM for five verified mornings.</p>
               <div class="stats">
@@ -524,7 +680,7 @@
           <div class="challenge-grid sport-panel" id="cycling">
             <article class="challenge-card" data-challenge="weekend-cycling">
               <div class="reward-rule rule-penalty">Penalty-funded Rewards</div>
-              <div class="challenge-period">May 24 → May 25</div>
+              <div class="challenge-period">May 24, 2026 → May 25, 2026</div>
               <h3>Weekend Cycling Pool</h3>
               <p>Ride 25km across the weekend.</p>
               <div class="stats"><span>Entry <b>30 RIALO</b></span><span>Pool <b>300 / 420</b></span><span>Starts <b>14 players</b></span></div>
@@ -532,7 +688,7 @@
             </article>
             <article class="challenge-card" data-challenge="bike-relief">
               <div class="reward-rule rule-rank">Rank-weighted Rewards</div>
-              <div class="challenge-period">May 28 → June 3</div>
+              <div class="challenge-period">May 28, 2026 → June 3, 2026</div>
               <h3>Bike for Relief</h3>
               <p>Complete three verified rides in one week.</p>
               <div class="stats"><span>Entry <b>22 RIALO</b></span><span>Pool <b>242 / 352</b></span><span>Starts <b>16 players</b></span></div>
@@ -540,7 +696,7 @@
             </article>
             <article class="challenge-card" data-challenge="team-ride">
               <div class="reward-rule rule-team">Team Completion Pool</div>
-              <div class="challenge-period">June 8 → June 10</div>
+              <div class="challenge-period">June 8, 2026 → June 10, 2026</div>
               <h3>50km Team Ride</h3>
               <p>Reach 50km as a team within three days.</p>
               <div class="stats"><span>Entry <b>18 RIALO</b></span><span>Pool <b>126 / 180</b></span><span>Starts <b>10 players</b></span></div>
@@ -551,7 +707,7 @@
           <div class="challenge-grid sport-panel" id="more">
             <article class="challenge-card" data-challenge="walk-meals">
               <div class="reward-rule rule-penalty">Penalty-funded Rewards</div>
-              <div class="challenge-period">May 23 → May 29</div>
+              <div class="challenge-period">May 23, 2026 → May 29, 2026</div>
               <h3>Walk for Meals</h3>
               <p>8,000 steps a day for food support.</p>
               <div class="stats"><span>Entry <b>15 RIALO</b></span><span>Pool <b>90 / 120</b></span><span>Starts <b>8 players</b></span></div>
@@ -559,7 +715,7 @@
             </article>
             <article class="challenge-card" data-challenge="morning-yoga">
               <div class="reward-rule rule-successors">All Successors Share Pool</div>
-              <div class="challenge-period">May 30 → June 8</div>
+              <div class="challenge-period">May 30, 2026 → June 8, 2026</div>
               <h3>Morning Yoga Streak</h3>
               <p>Complete a mindful session every morning.</p>
               <div class="stats"><span>Entry <b>18 RIALO</b></span><span>Pool <b>144 / 198</b></span><span>Starts <b>11 players</b></span></div>
@@ -567,7 +723,7 @@
             </article>
             <article class="challenge-card" data-challenge="step-battle">
               <div class="reward-rule rule-rank">Rank-weighted Rewards</div>
-              <div class="challenge-period">June 6 → June 12</div>
+              <div class="challenge-period">June 6, 2026 → June 12, 2026</div>
               <h3>Step Battle Week</h3>
               <p>Compete on verified steps for one week.</p>
               <div class="stats"><span>Entry <b>14 RIALO</b></span><span>Pool <b>140 / 168</b></span><span>Starts <b>12 players</b></span></div>
@@ -596,6 +752,7 @@
             <div class="data-flow-head">
               <span class="eyebrow">Connect Your Real-World Data to Rialo</span>
               <h3>Real-world activity becomes private proof.</h3>
+              <p class="flow-proof-note">Your activity data becomes a private proof, not a public record.</p>
             </div>
             <div class="data-flow-stage" aria-label="Real-world fitness data flow into Rialo">
               <div class="flow-unit">
@@ -668,6 +825,7 @@
               <div>
                 <h3>Choose what raw data stays hidden.</h3>
                 <p>Move2Give processes real-world fitness data through Rialo's private execution layer. The data is securely handled, but categories selected here are never exposed or published.</p>
+                <b class="privacy-permission-label">Private verification permission</b>
               </div>
             </div>
 
@@ -703,7 +861,7 @@
               </article>
             </div>
 
-            <p class="sensitive-helper privacy-info-bar">Raw fitness data is never published. Only verification results are recorded.</p>
+            <p class="sensitive-helper privacy-info-bar">No raw workout records are published. Selected sensitive fields stay protected during verification. Only verification results are recorded.</p>
           </section>
         </section>
 
@@ -800,8 +958,81 @@
       </div>
     </div>
 
+    <div class="final-settlement-modal" id="final-settlement-modal" hidden>
+      <div class="final-settlement-panel" role="dialog" aria-modal="true" aria-labelledby="final-settlement-title">
+        <button class="final-settlement-close" id="final-settlement-close" aria-label="Close final settlement receipt">x</button>
+        <span class="eyebrow">Proof of Impact</span>
+        <h3 id="final-settlement-title">Final Settlement</h3>
+        <p class="final-settlement-subtitle">Automatically computed by Rialo and executed on-chain without manual intervention.</p>
+        <div class="story-cue final-story-cue">
+          <span>Challenge Completed</span><i>→</i><span>Verified</span><i>→</i><span>Settled</span><i>→</i><span>Impact Created</span>
+        </div>
+
+        <section class="receipt-section user-result-section" aria-label="User result">
+          <div class="receipt-section-head">
+            <span>User Result</span>
+            <b id="final-challenge-name">14-Day Run Streak</b>
+          </div>
+          <div class="receipt-metrics">
+            <div><small>Final Rank</small><strong id="final-rank">#2</strong></div>
+            <div><small>Total Earned</small><strong id="final-earned">98 RIALO</strong></div>
+            <div><small>Donated Amount</small><strong id="final-donated">20 RIALO</strong></div>
+            <div><small>Sent to Wallet</small><strong id="final-wallet">78 RIALO</strong></div>
+          </div>
+        </section>
+
+        <section class="receipt-section verification-section" aria-label="Verification proof">
+          <div class="receipt-section-head">
+            <span>Verification</span>
+            <b>Private proof</b>
+          </div>
+          <div class="receipt-proof-list">
+            <span>Verified by Rialo</span>
+            <span>TEE + IPC private verification</span>
+            <span>Executed via REX</span>
+            <span>On-chain result published</span>
+            <span>Auto-triggered at challenge completion</span>
+          </div>
+        </section>
+
+        <section class="receipt-section final-impact-section" aria-label="Impact created">
+          <div class="receipt-section-head">
+            <span>Impact Created</span>
+            <b>Donation contribution</b>
+          </div>
+          <div class="impact-created-list" id="final-impact-created">
+            <span>✓ 20 RIALO contributed to Red Cross</span>
+            <span>✓ Real-world impact recorded with private verification</span>
+          </div>
+        </section>
+
+        <section class="receipt-section transaction-section" aria-label="Transaction status">
+          <div class="receipt-section-head">
+            <span>Transaction</span>
+            <b id="final-transaction-status">Confirmed</b>
+          </div>
+          <div class="transaction-hash">
+            <small>Mock Transaction Hash</small>
+            <strong id="final-transaction-hash">0x8f41...92cA</strong>
+            <em>Click to view on explorer</em>
+          </div>
+          <div class="receipt-detail-grid">
+            <div><small>Donation recipient</small><strong id="final-donation-recipient">Red Cross</strong></div>
+            <div><small>Receipt type</small><strong id="final-receipt-type">Proof of Impact</strong></div>
+          </div>
+          <div class="receipt-status-confirmed" id="final-status-line">Status: Confirmed</div>
+          <p class="receipt-privacy-note" id="final-privacy-note">Raw workout data stayed private. Only the verified outcome was recorded. No raw health data was exposed during this process.</p>
+        </section>
+
+        <div class="receipt-actions">
+          <button class="primary-action" id="view-onchain-result" type="button">View Verified Result (On-chain)</button>
+          <button class="secondary-action" id="download-receipt" type="button">Download Impact Receipt</button>
+        </div>
+      </div>
+    </div>
+
     <div class="toast" id="toast">Workout verified privately. Challenge state updated on Rialo.</div>
-    <script src="./script.js?v=data-flow-complete-v1"></script>
+    <script src="./script.js?v=default-overview-v1"></script>
   </body>
 </html>
 
