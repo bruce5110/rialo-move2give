@@ -19,6 +19,8 @@ const streakValue = document.querySelector("#streak-value");
 const progressValue = document.querySelector("#progress-value");
 const workoutProgressBar = document.querySelector("#workout-progress-bar");
 const executionStepCards = document.querySelectorAll("[data-execution-step]");
+const liveStatusSteps = document.querySelectorAll("[data-live-status-step]");
+const engineActiveMessage = document.querySelector("#engine-active-message");
 const executionFlowProgress = document.querySelector("#execution-flow-progress");
 const executionProgressValue = document.querySelector("#execution-progress-value");
 const sfsBudgetAmount = document.querySelector("#sfs-budget-amount");
@@ -39,6 +41,23 @@ const settlementCelebration = document.querySelector("#settlement-celebration");
 const celebrationPayout = document.querySelector("#celebration-payout");
 const celebrationWallet = document.querySelector("#celebration-wallet");
 const celebrationDonation = document.querySelector("#celebration-donation");
+const openFinalSettlementButton = document.querySelector("#open-final-settlement");
+const finalSettlementModal = document.querySelector("#final-settlement-modal");
+const finalSettlementClose = document.querySelector("#final-settlement-close");
+const finalChallengeName = document.querySelector("#final-challenge-name");
+const finalRank = document.querySelector("#final-rank");
+const finalEarned = document.querySelector("#final-earned");
+const finalDonated = document.querySelector("#final-donated");
+const finalWallet = document.querySelector("#final-wallet");
+const finalTransactionStatus = document.querySelector("#final-transaction-status");
+const finalTransactionHash = document.querySelector("#final-transaction-hash");
+const finalDonationRecipient = document.querySelector("#final-donation-recipient");
+const finalReceiptType = document.querySelector("#final-receipt-type");
+const finalStatusLine = document.querySelector("#final-status-line");
+const finalPrivacyNote = document.querySelector("#final-privacy-note");
+const finalImpactCreated = document.querySelector("#final-impact-created");
+const viewOnchainResultButton = document.querySelector("#view-onchain-result");
+const downloadReceiptButton = document.querySelector("#download-receipt");
 const currentStatusBadge = document.querySelector("#current-status-badge");
 const currentStatusCard = document.querySelector(".current-status");
 const historyModal = document.querySelector("#history-modal");
@@ -136,7 +155,7 @@ const completedMove2GiveState = {
 const historyDetails = {
   "run-streak": {
     title: "14-Day Run Streak",
-    period: "14 days",
+    period: "May 13, 2026 ~ May 27, 2026",
     result: "Completed",
     entryAmount: 20,
     participants: 10,
@@ -151,7 +170,7 @@ const historyDetails = {
   },
   "walk-meals": {
     title: "Walk for Meals",
-    period: "7 days",
+    period: "May 1, 2026 ~ May 7, 2026",
     result: "Failed",
     entryAmount: 15,
     participants: 8,
@@ -161,12 +180,12 @@ const historyDetails = {
     rankBonus: null,
     poolContribution: 15,
     donationOrganization: "Red Cross",
-    receiptStatus: "No donation receipt",
+    receiptStatus: "Donation receipt available when contribution is made.",
     outcomeNote: "Missed mission. Entry moved to winner reward pool",
   },
   "swim-water": {
     title: "Swim for Clean Water",
-    period: "7 days",
+    period: "April 23, 2026 ~ April 30, 2026",
     result: "Completed",
     entryAmount: 25,
     participants: 12,
@@ -181,7 +200,7 @@ const historyDetails = {
   },
   "morning-run": {
     title: "Morning Run Sprint",
-    period: "5 days",
+    period: "April 15, 2026 ~ April 22, 2026",
     result: "Completed",
     entryAmount: 10,
     participants: 6,
@@ -196,7 +215,7 @@ const historyDetails = {
   },
   "weekend-cycling": {
     title: "Weekend Cycling Pool",
-    period: "2 days",
+    period: "April 8, 2026 ~ April 14, 2026",
     result: "Completed",
     entryAmount: 30,
     participants: 14,
@@ -211,7 +230,7 @@ const historyDetails = {
   },
   "night-walk": {
     title: "Night Walk Crew",
-    period: "5 days",
+    period: "April 1, 2026 ~ April 7, 2026",
     result: "Completed",
     entryAmount: 12,
     participants: 9,
@@ -226,7 +245,7 @@ const historyDetails = {
   },
   "morning-yoga": {
     title: "Morning Yoga Streak",
-    period: "10 days",
+    period: "March 25, 2026 ~ March 31, 2026",
     result: "Completed",
     entryAmount: 18,
     participants: 11,
@@ -241,7 +260,7 @@ const historyDetails = {
   },
   "charity-5k": {
     title: "5K Charity Run",
-    period: "1 day",
+    period: "March 18, 2026 ~ March 24, 2026",
     result: "Completed",
     entryAmount: 15,
     participants: 20,
@@ -256,7 +275,7 @@ const historyDetails = {
   },
   "step-battle": {
     title: "Step Battle Week",
-    period: "7 days",
+    period: "March 10, 2026 ~ March 17, 2026",
     result: "Failed",
     entryAmount: 14,
     participants: 16,
@@ -266,12 +285,12 @@ const historyDetails = {
     rankBonus: null,
     poolContribution: 14,
     donationOrganization: "Red Cross",
-    receiptStatus: "No donation receipt",
+    receiptStatus: "Donation receipt available when contribution is made.",
     outcomeNote: "Step goal missed. Entry moved to winner reward pool",
   },
   "bike-relief": {
     title: "Bike for Relief",
-    period: "4 days",
+    period: "March 3, 2026 ~ March 9, 2026",
     result: "Completed",
     entryAmount: 22,
     participants: 13,
@@ -286,7 +305,7 @@ const historyDetails = {
   },
   "clean-water-sprint": {
     title: "Clean Water Sprint",
-    period: "3 days",
+    period: "February 24, 2026 ~ March 2, 2026",
     result: "Completed",
     entryAmount: 16,
     participants: 8,
@@ -301,7 +320,7 @@ const historyDetails = {
   },
   "lunch-run": {
     title: "Lunch Break Run",
-    period: "5 days",
+    period: "February 17, 2026 ~ February 23, 2026",
     result: "Failed",
     entryAmount: 11,
     participants: 7,
@@ -311,7 +330,7 @@ const historyDetails = {
     rankBonus: null,
     poolContribution: 11,
     donationOrganization: "Greenpeace",
-    receiptStatus: "No donation receipt",
+    receiptStatus: "Donation receipt available when contribution is made.",
     outcomeNote: "Midday run goal missed. Entry moved to winner reward pool",
   },
 };
@@ -357,22 +376,60 @@ function formatRialo(amount, options = {}) {
   return `${prefix}${amount} RIALO`;
 }
 
-function renderHistorySummary() {
+function calculateHistoryImpactTotals() {
   const visibleHistoryItems = Array.from(historyList?.querySelectorAll("[data-history-id]") ?? [])
     .map((row) => historyDetails[row.dataset.historyId])
     .filter(Boolean);
-  const totals = visibleHistoryItems.reduce(
-    (sum, item) => ({
-      earned: sum.earned + item.finalPayout,
-      donated: sum.donated + item.donationFromPayout,
-      spent: sum.spent + item.entryAmount,
-    }),
+
+  return visibleHistoryItems.reduce(
+    (sum, item) => {
+      const completed = item.result === "Completed";
+      return {
+        earned: sum.earned + (completed ? Number(item.finalPayout ?? 0) : 0),
+        donated: sum.donated + (completed ? Number(item.donationFromPayout ?? 0) : 0),
+        spent: sum.spent + Number(item.entryAmount ?? 0),
+      };
+    },
     { earned: 0, donated: 0, spent: 0 }
   );
+}
 
-  document.querySelector('[data-impact-total="earned"]').textContent = formatRialo(totals.earned);
-  document.querySelector('[data-impact-total="donated"]').textContent = formatRialo(totals.donated);
-  document.querySelector('[data-impact-total="spent"]').textContent = formatRialo(totals.spent);
+function renderOverviewImpactVisibility() {
+  const earnedTarget = document.querySelector('[data-impact-total="earned"]');
+  const donatedTarget = document.querySelector('[data-impact-total="donated"]');
+  const spentTarget = document.querySelector('[data-impact-total="spent"]');
+  const impactValues = [earnedTarget, donatedTarget, spentTarget].filter(Boolean);
+  if (!impactValues.length) return;
+
+  impactValues.forEach((target) => {
+    target.classList.toggle("locked", !walletConnected);
+    if (!walletConnected) {
+      target.classList.remove("revealed", "impact-value-updated");
+      target.textContent = "Connect wallet";
+    }
+  });
+}
+
+function renderHistorySummary() {
+  const earnedTarget = document.querySelector('[data-impact-total="earned"]');
+  const donatedTarget = document.querySelector('[data-impact-total="donated"]');
+  const spentTarget = document.querySelector('[data-impact-total="spent"]');
+  if (!earnedTarget || !donatedTarget || !spentTarget) return;
+
+  renderOverviewImpactVisibility();
+  if (!walletConnected) return;
+
+  const totals = calculateHistoryImpactTotals();
+
+  earnedTarget.textContent = formatRialo(totals.earned);
+  donatedTarget.textContent = formatRialo(totals.donated);
+  spentTarget.textContent = formatRialo(totals.spent);
+
+  [earnedTarget, donatedTarget, spentTarget].forEach((target) => {
+    target.classList.remove("locked", "revealed");
+    void target.offsetWidth;
+    target.classList.add("revealed");
+  });
 }
 
 function pulseImpactRows() {
@@ -493,6 +550,12 @@ function buildHistoryButton(id) {
 
   const heading = document.createElement("b");
   heading.append(detail.title, " ");
+  if (detail.period) {
+    const period = document.createElement("span");
+    period.className = "history-date-range";
+    period.textContent = `(${detail.period})`;
+    heading.append(period, " ");
+  }
 
   const resultBadge = document.createElement("span");
   resultBadge.className = `history-result-badge ${detail.result.toLowerCase()}`;
@@ -508,7 +571,7 @@ function buildHistoryButton(id) {
   summary.textContent =
     detail.result === "Completed"
       ? `Completed · Entry ${formatRialo(detail.entryAmount)} · Final payout ${formatRialo(detail.finalPayout)} · ${formatRialo(detail.donationFromPayout)} donated`
-      : `Failed · Entry ${formatRialo(detail.entryAmount)} lost · moved to winner reward pool`;
+      : `Failed · Entry ${formatRialo(detail.entryAmount)} moved to winner reward pool`;
 
   button.append(heading, summary);
   return button;
@@ -545,36 +608,71 @@ function addSettledChallengeToHistory() {
 }
 
 function showSettlementCelebration() {
-  if (!settlementCelebration) return Promise.resolve();
+  return Promise.resolve();
+}
 
-  celebrationPayout.textContent = `${formatRialo(currentRewardAllocation.estimatedPayout)} allocated`;
-  celebrationWallet.textContent = formatRialo(currentRewardAllocation.toWallet);
-  celebrationDonation.textContent = formatRialo(currentRewardAllocation.toDonation);
-  settlementCelebration.hidden = false;
-  settlementCelebration.classList.remove("show");
-  void settlementCelebration.offsetWidth;
-  settlementCelebration.classList.add("show");
+function receiptHashForDetail(detail) {
+  const seed = (detail?.title ?? "Move2Give").replace(/[^a-z0-9]/gi, "").slice(0, 4).padEnd(4, "8f41");
+  return `0x${seed}...92cA`;
+}
 
-  window.clearTimeout(showSettlementCelebration.timer);
-  return new Promise((resolve) => {
-    showSettlementCelebration.timer = window.setTimeout(() => {
-      settlementCelebration.classList.remove("show");
-      settlementCelebration.hidden = true;
-      resolve();
-    }, 3800);
-  });
+function renderFinalSettlementReceipt(detail = historyDetails["run-streak"]) {
+  if (!detail) return;
+
+  const isCompleted = detail.result === "Completed";
+  const finalPayout = Number(detail.finalPayout ?? 0);
+  const donationAmount = Number(detail.donationFromPayout ?? 0);
+  const netReceived = Math.max(0, finalPayout - donationAmount);
+  const organization = detail.donationOrganization ?? "None";
+  const receiptType = isCompleted && donationAmount > 0 ? "Proof of Impact" : detail.receiptStatus ?? "Settlement proof";
+
+  if (finalChallengeName) finalChallengeName.textContent = detail.title ?? "Move2Give Challenge";
+  if (finalRank) finalRank.textContent = isCompleted ? detail.rank ?? "#-" : "N/A";
+  if (finalEarned) finalEarned.textContent = formatRialo(finalPayout);
+  if (finalDonated) finalDonated.textContent = formatRialo(donationAmount);
+  if (finalWallet) finalWallet.textContent = formatRialo(netReceived);
+  if (finalTransactionStatus) finalTransactionStatus.textContent = isCompleted ? "Confirmed" : "Settled";
+  if (finalTransactionHash) finalTransactionHash.textContent = receiptHashForDetail(detail);
+  if (finalDonationRecipient) finalDonationRecipient.textContent = organization;
+  if (finalReceiptType) finalReceiptType.textContent = receiptType;
+  if (finalStatusLine) finalStatusLine.textContent = `Status: ${isCompleted ? "Confirmed" : "Settled"}`;
+  if (finalImpactCreated) {
+    finalImpactCreated.innerHTML = donationAmount > 0
+      ? `<span>✓ ${formatRialo(donationAmount)} contributed to ${organization}</span><span>✓ Real-world impact recorded with private verification</span>`
+      : `<span>Donation receipt available when contribution is made.</span><span>✓ Verified result recorded with private proof</span>`;
+  }
+  if (finalPrivacyNote) {
+    finalPrivacyNote.textContent = isCompleted
+      ? "Raw workout data stayed private. Only the verified outcome was recorded. No raw health data was exposed during this process."
+      : "Raw workout data stayed private. The verified result was recorded without publishing raw fitness data. No raw health data was exposed during this process.";
+  }
+}
+
+function openFinalSettlementReceipt(detail = historyDetails["run-streak"]) {
+  if (!finalSettlementModal) return;
+  renderFinalSettlementReceipt(detail);
+  finalSettlementModal.hidden = false;
+  finalSettlementModal.classList.remove("show");
+  void finalSettlementModal.offsetWidth;
+  finalSettlementModal.classList.add("show");
+}
+
+function closeFinalSettlementReceipt() {
+  if (!finalSettlementModal) return;
+  finalSettlementModal.classList.remove("show");
+  finalSettlementModal.hidden = true;
 }
 
 function renderCurrentStatusPreview(progressDay, rank, streak = 8) {
   syncText("dashboard-current-progress", `Day ${progressDay} / ${move2GiveState.totalDays}`);
   syncProgressBar("dashboard-current-bar", progressDay, move2GiveState.totalDays);
-  syncText("dashboard-streak", `${streak} days`);
+  syncText("dashboard-streak", "8 days");
   syncText("dashboard-ranking", `#${rank}`);
   pulseSyncedElements(["dashboard-current-progress", "dashboard-current-bar", "dashboard-streak", "dashboard-ranking"]);
 }
 
 function renderSettlementCompletedStatus() {
-  renderCurrentStatusPreview(14, currentRewardAllocation.rank, 13);
+  renderCurrentStatusPreview(14, currentRewardAllocation.rank, 8);
   currentStatusBadge.hidden = false;
   currentStatusBadge.classList.add("show");
 }
@@ -585,7 +683,7 @@ async function animateCurrentStatusSettlement() {
   renderCurrentStatusPreview(8, currentRewardAllocation.rank, 8);
   await new Promise((resolve) => window.setTimeout(resolve, 120));
 
-  renderCurrentStatusPreview(14, currentRewardAllocation.rank, 13);
+  renderCurrentStatusPreview(14, currentRewardAllocation.rank, 8);
   await new Promise((resolve) => window.setTimeout(resolve, 900));
 
   settlementCompleted = true;
@@ -602,7 +700,7 @@ async function simulateSettlementPreview() {
   settlementCompleted = false;
   freezeRewardEstimate();
   settlementButton.disabled = true;
-  settlementStatus.hidden = true;
+  if (settlementStatus) settlementStatus.hidden = true;
   settlementBadge.hidden = true;
   rewardAllocationCard.classList.remove("settlement-complete");
   rewardAllocationCard.classList.add("settlement-running");
@@ -614,14 +712,11 @@ async function simulateSettlementPreview() {
   }
 
   rewardAllocationCard.dataset.settlementPhase = "complete";
-  settlementStatus.hidden = false;
   settlementBadge.hidden = false;
-  const celebrationDone = showSettlementCelebration();
   await animateCurrentStatusSettlement();
-  await celebrationDone;
-  await new Promise((resolve) => window.setTimeout(resolve, 420));
   addSettledChallengeToHistory();
   chargeSfsSettlementFee();
+  window.setTimeout(() => openFinalSettlementReceipt(historyDetails["run-streak"]), 1500);
 
   await new Promise((resolve) => window.setTimeout(resolve, 320));
   rewardAllocationCard.classList.remove("settlement-running");
@@ -654,7 +749,7 @@ function pulseSyncedElements(selectors) {
 
 function renderDashboardState() {
   if (settlementCompleted) {
-    syncText("dashboard-stream-streak", "13 days");
+    syncText("dashboard-stream-streak", "8 days");
     renderSettlementCompletedStatus();
     freezeRewardEstimate();
     return;
@@ -713,11 +808,18 @@ function setMove2GiveState(nextState, options = {}) {
 
 function openHistoryDetail(id) {
   const detail = historyDetails[id];
-  if (!detail || !historyModal) return;
+  if (!detail) return;
 
   historyList?.querySelectorAll("button").forEach((button) => {
     button.classList.toggle("selected", button.dataset.historyId === id);
   });
+  openFinalSettlementReceipt(detail);
+}
+
+function openLegacyHistoryDetail(id) {
+  const detail = historyDetails[id];
+  if (!detail || !historyModal) return;
+
   historyModalTitle.textContent = detail.title;
   historyPeriod.textContent = detail.period;
   historyResult.textContent = detail.result;
@@ -817,8 +919,8 @@ const challengeDetails = {
     totalPool: 400,
     sponsorName: "Nike",
     rewardRule: "Rank-weighted Rewards",
-    startDate: "May 1",
-    endDate: "May 14",
+    startDate: "May 1, 2026",
+    endDate: "May 14, 2026",
     days: "14 days",
     donationTarget: "UNICEF",
     donationLogo: "./assets/ngo-unicef.svg",
@@ -842,8 +944,8 @@ const challengeDetails = {
     totalPool: 400,
     sponsorName: "Nike",
     rewardRule: "Winner Takes All Pool",
-    startDate: "May 21",
-    endDate: "May 27",
+    startDate: "May 21, 2026",
+    endDate: "May 27, 2026",
     days: "7 days",
     donationTarget: "Red Cross",
     donationLogo: "./assets/ngo-red-cross.svg",
@@ -867,8 +969,8 @@ const challengeDetails = {
     totalPool: 360,
     sponsorName: "Red Bull",
     rewardRule: "All Successors Share Pool",
-    startDate: "June 1",
-    endDate: "June 7",
+    startDate: "June 1, 2026",
+    endDate: "June 7, 2026",
     days: "7 days",
     donationTarget: "UNICEF",
     donationLogo: "./assets/ngo-unicef.svg",
@@ -892,8 +994,8 @@ const challengeDetails = {
     totalPool: 360,
     sponsorName: "Adidas",
     rewardRule: "Top 3 Share the Pool",
-    startDate: "May 25",
-    endDate: "June 3",
+    startDate: "May 25, 2026",
+    endDate: "June 3, 2026",
     days: "10 days",
     donationTarget: "Greenpeace",
     donationLogo: "./assets/ngo-greenpeace.svg",
@@ -917,8 +1019,8 @@ const challengeDetails = {
     totalPool: 320,
     sponsorName: "Red Bull",
     rewardRule: "Rank-weighted Rewards",
-    startDate: "May 22",
-    endDate: "May 28",
+    startDate: "May 22, 2026",
+    endDate: "May 28, 2026",
     days: "7 days",
     donationTarget: "Red Cross",
     donationLogo: "./assets/ngo-red-cross.svg",
@@ -942,8 +1044,8 @@ const challengeDetails = {
     totalPool: 400,
     sponsorName: "Adidas",
     rewardRule: "All Successors Share Pool",
-    startDate: "May 29",
-    endDate: "June 4",
+    startDate: "May 29, 2026",
+    endDate: "June 4, 2026",
     days: "7 days",
     donationTarget: "UNICEF",
     donationLogo: "./assets/ngo-unicef.svg",
@@ -967,8 +1069,8 @@ const challengeDetails = {
     totalPool: 288,
     sponsorName: "Nike",
     rewardRule: "Top 3 Share the Pool",
-    startDate: "June 5",
-    endDate: "June 11",
+    startDate: "June 5, 2026",
+    endDate: "June 11, 2026",
     days: "7 days",
     donationTarget: "Greenpeace",
     donationLogo: "./assets/ngo-greenpeace.svg",
@@ -982,7 +1084,7 @@ const challengeDetails = {
   },
   "weekend-cycling": {
     title: "Weekend Cycling Pool", status: "Upcoming", joinedCount: 10, maxParticipants: 14, entryAmount: 30, poolAmount: 420, basePool: 420, sponsorBoost: 420, totalPool: 840, sponsorName: "Adidas", rewardRule: "Penalty-funded Rewards",
-    startDate: "May 24", endDate: "May 25", days: "2 days", donationTarget: "UNICEF", donationLogo: "./assets/ngo-unicef.svg", donationPurpose: "Child relief",
+    startDate: "May 24, 2026", endDate: "May 25, 2026", days: "2 days", donationTarget: "UNICEF", donationLogo: "./assets/ngo-unicef.svg", donationPurpose: "Child relief",
     tieBreakers: ["Distance", "Elevation", "Active calories"],
     condition: { if: ["Cycle ≥ 25 km", "WITHIN weekend"], then: "Qualify for reward split", else: "Stake moved to reward pool" },
     verification: { source: "Strava / Health Connect", processing: "Encrypted input · TEE verification", output: "Ride completion result only" },
@@ -992,7 +1094,7 @@ const challengeDetails = {
   },
   "bike-relief": {
     title: "Bike for Relief", status: "Upcoming", joinedCount: 11, maxParticipants: 16, entryAmount: 22, poolAmount: 352, basePool: 352, sponsorBoost: 352, totalPool: 704, sponsorName: "Red Bull", rewardRule: "Rank-weighted Rewards",
-    startDate: "May 28", endDate: "June 3", days: "7 days", donationTarget: "Red Cross", donationLogo: "./assets/ngo-red-cross.svg", donationPurpose: "Emergency relief",
+    startDate: "May 28, 2026", endDate: "June 3, 2026", days: "7 days", donationTarget: "Red Cross", donationLogo: "./assets/ngo-red-cross.svg", donationPurpose: "Emergency relief",
     tieBreakers: ["Ride count", "Distance", "Consistency"],
     condition: { if: ["Complete 3 rides", "WITHIN 7 days"], then: "Maintain ride streak", else: "Stake moved to reward pool" },
     verification: { source: "Strava / Health Connect", processing: "Encrypted input · TEE verification", output: "Ride count result only" },
@@ -1002,7 +1104,7 @@ const challengeDetails = {
   },
   "team-ride": {
     title: "50km Team Ride", status: "Upcoming", joinedCount: 7, maxParticipants: 10, entryAmount: 18, poolAmount: 180, basePool: 180, sponsorBoost: 180, totalPool: 360, sponsorName: "Nike", rewardRule: "Team Completion Pool",
-    startDate: "June 8", endDate: "June 10", days: "3 days", donationTarget: "Greenpeace", donationLogo: "./assets/ngo-greenpeace.svg", donationPurpose: "Climate action",
+    startDate: "June 8, 2026", endDate: "June 10, 2026", days: "3 days", donationTarget: "Greenpeace", donationLogo: "./assets/ngo-greenpeace.svg", donationPurpose: "Climate action",
     tieBreakers: ["Team distance", "Active players", "Finish time"],
     condition: { if: ["Team distance ≥ 50 km", "WITHIN 3 days"], then: "Share reward by team rank", else: "Stake moved to reward pool" },
     verification: { source: "Strava / phone sensors", processing: "Encrypted input · TEE verification", output: "Team distance result only" },
@@ -1012,7 +1114,7 @@ const challengeDetails = {
   },
   "walk-meals": {
     title: "Walk for Meals", status: "Upcoming", joinedCount: 6, maxParticipants: 8, entryAmount: 15, poolAmount: 120, basePool: 120, sponsorBoost: 120, totalPool: 240, sponsorName: "Red Bull", rewardRule: "Penalty-funded Rewards",
-    startDate: "May 23", endDate: "May 29", days: "7 days", donationTarget: "Red Cross", donationLogo: "./assets/ngo-red-cross.svg", donationPurpose: "Meals support",
+    startDate: "May 23, 2026", endDate: "May 29, 2026", days: "7 days", donationTarget: "Red Cross", donationLogo: "./assets/ngo-red-cross.svg", donationPurpose: "Meals support",
     tieBreakers: ["Step streak", "Total steps", "Active minutes"],
     condition: { if: ["Steps ≥ 8,000", "EVERY day", "FOR 7 days"], then: "Maintain walk streak", else: "Stake moved to reward pool" },
     verification: { source: "Phone step counter / Health Connect", processing: "Encrypted input · TEE verification", output: "Step condition result only" },
@@ -1022,7 +1124,7 @@ const challengeDetails = {
   },
   "morning-yoga": {
     title: "Morning Yoga Streak", status: "Upcoming", joinedCount: 8, maxParticipants: 11, entryAmount: 18, poolAmount: 198, basePool: 198, sponsorBoost: 198, totalPool: 396, sponsorName: "Adidas", rewardRule: "All Successors Share Pool",
-    startDate: "May 30", endDate: "June 8", days: "10 days", donationTarget: "Greenpeace", donationLogo: "./assets/ngo-greenpeace.svg", donationPurpose: "Climate action",
+    startDate: "May 30, 2026", endDate: "June 8, 2026", days: "10 days", donationTarget: "Greenpeace", donationLogo: "./assets/ngo-greenpeace.svg", donationPurpose: "Climate action",
     tieBreakers: ["Streak days", "Active minutes", "Start time"],
     condition: { if: ["Yoga ≥ 20 min", "EVERY morning", "FOR 10 days"], then: "Maintain yoga streak", else: "Stake moved to reward pool" },
     verification: { source: "Apple Health / phone sensors", processing: "Encrypted input · TEE verification", output: "Session result only" },
@@ -1032,7 +1134,7 @@ const challengeDetails = {
   },
   "step-battle": {
     title: "Step Battle Week", status: "Upcoming", joinedCount: 10, maxParticipants: 12, entryAmount: 14, poolAmount: 168, basePool: 168, sponsorBoost: 168, totalPool: 336, sponsorName: "Nike", rewardRule: "Rank-weighted Rewards",
-    startDate: "June 6", endDate: "June 12", days: "7 days", donationTarget: "UNICEF", donationLogo: "./assets/ngo-unicef.svg", donationPurpose: "Youth support",
+    startDate: "June 6, 2026", endDate: "June 12, 2026", days: "7 days", donationTarget: "UNICEF", donationLogo: "./assets/ngo-unicef.svg", donationPurpose: "Youth support",
     tieBreakers: ["Total steps", "Active days", "Active minutes"],
     condition: { if: ["Highest verified steps", "WITHIN 7 days"], then: "Rank by verified total", else: "Stake moved to reward pool" },
     verification: { source: "Phone step counter / Health Connect", processing: "Encrypted input · TEE verification", output: "Leaderboard result only" },
@@ -1103,6 +1205,9 @@ function pulseSponsorVideo() {
 function showPanel(id) {
   panels.forEach((panel) => panel.classList.toggle("active", panel.id === id));
   navItems.forEach((item) => item.classList.toggle("active", item.dataset.panel === id));
+  window.requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  });
 }
 
 function showSport(id) {
@@ -1136,13 +1241,16 @@ function renderSelectedChallenge(detail) {
       <article class="sector-card contract-sector">
         <span class="challenge-contract-title">Challenge Contract</span>
         <h4 class="challenge-contract-name">${detail.title}</h4>
+        <div class="story-cue challenge-story-cue">
+          <span>Move</span><i>→</i><span>Verify Privately</span><i>→</i><span>Settle On-chain</span><i>→</i><span>Create Impact</span>
+        </div>
         <div class="sector-facts">
           <div><small>Period</small><b>${detail.startDate} → ${detail.endDate}</b></div>
           <div><small>Entry</small><b>${detail.entryAmount} RIALO</b></div>
           <div><small>Reward Rule</small><b>${detail.rewardRule}</b></div>
         </div>
         <div class="contract-condition">
-          <small>Condition</small>
+          <small>Auto-execution condition</small>
           <strong>${formatConditionLine(detail.condition.if)}</strong>
           <em>Private verification · raw data hidden</em>
         </div>
@@ -1150,6 +1258,8 @@ function renderSelectedChallenge(detail) {
           <small>Ranking Logic</small>
           <ol>${detail.tieBreakers.map((rule, index) => `<li><b>${index + 1}</b>${rule}</li>`).join("")}</ol>
         </div>
+        <p class="auto-execution-note">This challenge is automatically verified and executed by Rialo when the conditions are met.</p>
+        <p class="ranking-helper">Rialo checks the condition, ranks participants, and routes settlement automatically.</p>
       </article>
       <article class="sector-card donation-sector">
         <span>Donation</span>
@@ -1434,6 +1544,14 @@ function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function renderLiveStatusTimeline(activeStep = 0, completedAll = false) {
+  liveStatusSteps.forEach((step) => {
+    const stepNumber = Number(step.dataset.liveStatusStep);
+    step.classList.toggle("active", !completedAll && stepNumber === activeStep);
+    step.classList.toggle("complete", completedAll || stepNumber < activeStep);
+  });
+}
+
 function resetLiveVerification() {
   setMove2GiveState({
     ...initialMove2GiveState,
@@ -1454,17 +1572,20 @@ function resetLiveVerification() {
   executionStatus.classList.remove("complete");
   executionStatus.innerHTML = "<span>Live workout verification running</span>";
   executionStatus.dataset.step = "";
+  if (engineActiveMessage) engineActiveMessage.textContent = "Waiting for live fitness update...";
+  renderLiveStatusTimeline(0, false);
 }
 
 async function runLiveVerificationCycle() {
   if (!executionStatus) return;
 
   const steps = [
-    "Fetching Web2 fitness data...",
-    "Encrypting private input...",
-    "Verifying condition privately...",
-    "Updating streak, rank, pool state...",
-    "Publishing verified result only...",
+    { message: "Auto-fetching workout data", flowStep: 1 },
+    { message: "Privately verifying condition", flowStep: 3 },
+    { message: "REX updating streak and rank", flowStep: 4 },
+    { message: "Preparing automatic settlement", flowStep: 5 },
+    { message: "Donation route ready", flowStep: 5 },
+    { message: "Verified result prepared", flowStep: 5 },
   ];
 
   resetLiveVerification();
@@ -1476,7 +1597,8 @@ async function runLiveVerificationCycle() {
     const rawProgress = tick / totalTicks;
     const easedProgress = 1 - Math.pow(1 - rawProgress, 2);
     const progress = Math.min(100, Math.round(liveExecutionBase + easedProgress * (100 - liveExecutionBase)));
-    const activeFlowStep = Math.min(5, Math.ceil(tick / ticksPerStep));
+    const activeStatusStep = Math.min(steps.length, Math.ceil(tick / ticksPerStep));
+    const activeFlowStep = steps[activeStatusStep - 1].flowStep;
     if (progressValue) progressValue.textContent = `${progress}%`;
     if (workoutProgressBar) workoutProgressBar.style.width = `${progress}%`;
     if (executionProgressValue) executionProgressValue.textContent = `${progress}%`;
@@ -1488,8 +1610,10 @@ async function runLiveVerificationCycle() {
       card.classList.toggle("active", cardStep === activeFlowStep);
     });
 
-    executionStatus.innerHTML = `<span>${steps[activeFlowStep - 1]}</span>`;
-    executionStatus.dataset.step = `${activeFlowStep} / ${steps.length}`;
+    renderLiveStatusTimeline(activeStatusStep, false);
+    if (engineActiveMessage) engineActiveMessage.textContent = steps[activeStatusStep - 1].message;
+    executionStatus.innerHTML = `<span>${steps[activeStatusStep - 1].message}</span>`;
+    executionStatus.dataset.step = `${activeStatusStep} / ${steps.length}`;
     await wait(420);
   }
 
@@ -1512,7 +1636,9 @@ async function runLiveVerificationCycle() {
   executionStatus.classList.remove("running");
   executionStatus.classList.add("complete");
   executionStatus.innerHTML = "<span>Rule check passed · Streak updated · Challenge state updated</span>";
-  executionStatus.dataset.step = "5 / 5";
+  executionStatus.dataset.step = "6 / 6";
+  if (engineActiveMessage) engineActiveMessage.textContent = "On-chain result prepared.";
+  renderLiveStatusTimeline(6, true);
   streakLocked = true;
   setMove2GiveState({ ...completedMove2GiveState, ranking: move2GiveState.ranking }, { overviewDelay: 0 });
   if (conditionTitle) conditionTitle.textContent = "Live workout verification running";
@@ -1574,6 +1700,7 @@ function setWalletConnected(account, verified = false) {
   walletMenu.classList.remove("open");
   walletMenu.hidden = true;
   syncDataFlowWalletState();
+  renderHistorySummary();
 }
 
 async function revokeWalletPermissions() {
@@ -1752,6 +1879,17 @@ sportTabs.forEach((tab) => tab.addEventListener("click", () => showSport(tab.dat
 challengeCards.forEach((card) => card.addEventListener("click", () => selectChallenge(card.dataset.challenge)));
 walletShortcutButtons.forEach((button) => button.addEventListener("click", () => walletButton.click()));
 settlementButton?.addEventListener("click", simulateSettlementPreview);
+openFinalSettlementButton?.addEventListener("click", openFinalSettlementReceipt);
+finalSettlementClose?.addEventListener("click", closeFinalSettlementReceipt);
+finalSettlementModal?.addEventListener("click", (event) => {
+  if (event.target === finalSettlementModal) closeFinalSettlementReceipt();
+});
+viewOnchainResultButton?.addEventListener("click", () => {
+  showToast("Opening mock on-chain result: 0x8f41...92cA", 1500);
+});
+downloadReceiptButton?.addEventListener("click", () => {
+  showToast("Receipt download simulated.", 1500);
+});
 sourceNodes.forEach((node) => {
   node.addEventListener("click", () => openDataPermissionModal(node.dataset.sourceNode));
 });
@@ -1789,6 +1927,7 @@ document.addEventListener("keydown", (event) => {
     closeHistoryDetail();
     closeApprovalModal();
     closeDataPermissionModal();
+    closeFinalSettlementReceipt();
   }
 });
 
@@ -1871,6 +2010,8 @@ document.addEventListener("click", (event) => {
 const initialPanel = new URLSearchParams(window.location.search).get("panel");
 if (initialPanel && document.getElementById(initialPanel)) {
   showPanel(initialPanel);
+} else {
+  showPanel("dashboard");
 }
 
 renderHistorySummary();
