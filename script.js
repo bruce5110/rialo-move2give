@@ -1185,6 +1185,7 @@ function withMatchedSponsorPool(detail) {
     basePool,
     sponsorBoost,
     totalPool: basePool + sponsorBoost,
+    donationPercent: detail.donationPercent ?? 20,
   };
 }
 
@@ -1312,7 +1313,7 @@ function renderSelectedChallenge(detail) {
       <span class="eyebrow">Selected Challenge</span>
       <div class="selected-prize-hero">
         <h3>${detail.title}</h3>
-        <strong>Total Prize: ${detail.totalPool} RIALO</strong>
+        <strong>Total Prize: ${detail.totalPool} RIALO, ${detail.donationPercent}% of your earnings will be donated.</strong>
       </div>
     </div>
     <div class="selected-sectors">
