@@ -3667,7 +3667,7 @@ body.wallet-connected .score-number {
 }
 
 .selected-prize-hero {
-  width: min(760px, 100%);
+  width: min(980px, 100%);
   padding: 12px 18px;
   border: 1px solid rgba(28, 139, 90, 0.26);
   border-radius: 8px;
@@ -3686,6 +3686,7 @@ body.wallet-connected .score-number {
   font-weight: 950;
   letter-spacing: 0.5px;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .selected-sectors {
