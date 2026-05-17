@@ -58,6 +58,13 @@ const finalPrivacyNote = document.querySelector("#final-privacy-note");
 const finalImpactCreated = document.querySelector("#final-impact-created");
 const viewOnchainResultButton = document.querySelector("#view-onchain-result");
 const downloadReceiptButton = document.querySelector("#download-receipt");
+const sponsorStoreModal = document.querySelector("#sponsor-store-modal");
+const sponsorStoreClose = document.querySelector("#sponsor-store-close");
+const sponsorStorePreview = document.querySelector("#sponsor-store-preview");
+const sponsorStoreFallback = document.querySelector("#sponsor-store-fallback");
+const sponsorStoreName = document.querySelector("#sponsor-store-name");
+const visitSponsorStoreButton = document.querySelector("#visit-sponsor-store");
+const closeSponsorStoreButton = document.querySelector("#close-sponsor-store");
 const currentStatusBadge = document.querySelector("#current-status-badge");
 const currentStatusCard = document.querySelector(".current-status");
 const historyModal = document.querySelector("#history-modal");
@@ -1152,6 +1159,24 @@ const sponsorVideoSources = {
   Adidas: "./assets/adidas-ad.mp4",
 };
 
+const sponsorStorePreviews = {
+  Nike: {
+    buttonText: "Open NIKE Official Store",
+    image: "./assets/nike-store-preview.png",
+    label: "NIKE",
+  },
+  Adidas: {
+    buttonText: "Open Adidas Official Store",
+    image: "./assets/adidas-store-preview.png",
+    label: "Adidas",
+  },
+  "Red Bull": {
+    buttonText: "Open Red Bull Official Store",
+    image: "./assets/redbull-store-preview.png",
+    label: "Red Bull",
+  },
+};
+
 function withMatchedSponsorPool(detail) {
   const basePool = detail.basePool ?? detail.poolAmount ?? 0;
   const sponsorBoost = basePool;
@@ -1191,6 +1216,59 @@ function renderSponsorMedia(sponsorName) {
       }
     </div>
   `;
+}
+
+function renderSponsorStoreButton(sponsorName) {
+  const preview = sponsorStorePreviews[sponsorName];
+  const buttonText = preview?.buttonText ?? `Open ${sponsorName} Official Store`;
+  return `<button class="sponsor-store-button" type="button" data-sponsor-store="${sponsorName}">${buttonText}</button>`;
+}
+
+function renderDonationLogo(detail) {
+  const isRedCross = detail.donationTarget === "Red Cross";
+  const fallback = isRedCross
+    ? `<div class="donation-logo-fallback red-cross-fallback" aria-label="Red Cross logo"><i></i><strong>Red Cross</strong></div>`
+    : `<div class="donation-logo-fallback" aria-label="${detail.donationTarget} logo">${detail.donationTarget}</div>`;
+
+  return `
+    <div class="donation-logo-wrap">
+      <img src="${detail.donationLogo}" alt="${detail.donationTarget} logo" onerror="this.hidden=true; this.nextElementSibling.hidden=false;" />
+      <div hidden>${fallback}</div>
+    </div>
+  `;
+}
+
+function openSponsorStorePreview(sponsorName) {
+  if (!sponsorStoreModal) return;
+
+  const preview = sponsorStorePreviews[sponsorName] ?? {
+    image: "",
+    label: sponsorName || "Sponsor",
+  };
+
+  sponsorStoreModal.dataset.sponsor = preview.label;
+  if (sponsorStoreName) sponsorStoreName.textContent = preview.label;
+
+  if (sponsorStorePreview) {
+    sponsorStorePreview.classList.remove("is-missing");
+    sponsorStorePreview.alt = `${preview.label} official store preview`;
+    sponsorStorePreview.src = preview.image || "";
+    sponsorStorePreview.hidden = !preview.image;
+  }
+
+  if (sponsorStoreFallback) {
+    sponsorStoreFallback.textContent = `${preview.label} official store preview`;
+    sponsorStoreFallback.hidden = Boolean(preview.image);
+  }
+
+  sponsorStoreModal.hidden = false;
+  window.requestAnimationFrame(() => sponsorStoreModal.classList.add("show"));
+}
+
+function closeSponsorStorePreview() {
+  if (!sponsorStoreModal) return;
+  sponsorStoreModal.classList.remove("show");
+  sponsorStoreModal.hidden = true;
 }
 
 function pulseSponsorVideo() {
@@ -1264,7 +1342,7 @@ function renderSelectedChallenge(detail) {
       <article class="sector-card donation-sector">
         <span>Donation</span>
         <div class="donation-hero">
-          <img src="${detail.donationLogo}" alt="${detail.donationTarget} logo" />
+          ${renderDonationLogo(detail)}
           <h4>${detail.donationTarget}</h4>
           <b>${detail.donationPurpose}</b>
         </div>
@@ -1272,7 +1350,10 @@ function renderSelectedChallenge(detail) {
       </article>
       <article class="sector-card sponsor-sector">
         <span>Sponsor Boost : ${sponsorLabel}</span>
-        ${renderSponsorMedia(detail.sponsorName)}
+        <div class="sponsor-commerce-group">
+          ${renderSponsorMedia(detail.sponsorName)}
+          ${renderSponsorStoreButton(detail.sponsorName)}
+        </div>
         <div class="boost-rows sponsor-boost-only">
           <div class="boost"><small>Sponsor Boost</small><b>+${detail.sponsorBoost} RIALO</b></div>
         </div>
@@ -1911,6 +1992,16 @@ viewOnchainResultButton?.addEventListener("click", () => {
 downloadReceiptButton?.addEventListener("click", () => {
   showToast("Receipt download simulated.", 1500);
 });
+sponsorStoreClose?.addEventListener("click", closeSponsorStorePreview);
+closeSponsorStoreButton?.addEventListener("click", closeSponsorStorePreview);
+visitSponsorStoreButton?.addEventListener("click", () => {
+  showToast("External store connection demo", 1400);
+});
+sponsorStorePreview?.addEventListener("error", () => {
+  sponsorStorePreview.hidden = true;
+  sponsorStorePreview.classList.add("is-missing");
+  if (sponsorStoreFallback) sponsorStoreFallback.hidden = false;
+});
 sourceNodes.forEach((node) => {
   node.addEventListener("click", () => openDataPermissionModal(node.dataset.sourceNode));
 });
@@ -2020,6 +2111,16 @@ document.addEventListener("click", (event) => {
   }
 
   openJoinApproval();
+});
+
+sponsorStoreModal?.addEventListener("click", (event) => {
+  if (event.target === sponsorStoreModal) closeSponsorStorePreview();
+});
+
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-sponsor-store]");
+  if (!button) return;
+  openSponsorStorePreview(button.dataset.sponsorStore);
 });
 
 document.addEventListener("click", (event) => {
