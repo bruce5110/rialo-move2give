@@ -936,6 +936,25 @@
       </div>
     </div>
 
+    <div class="sponsor-store-modal" id="sponsor-store-modal" hidden>
+      <div class="sponsor-store-panel" role="dialog" aria-modal="true" aria-labelledby="sponsor-store-title">
+        <button class="sponsor-store-close" id="sponsor-store-close" aria-label="Close sponsor store preview">x</button>
+        <span class="eyebrow">Sponsor Commerce Bridge</span>
+        <h3 id="sponsor-store-title">Connected Web2 Commerce Experience</h3>
+        <p class="sponsor-store-subtitle">M2G can connect sponsor campaigns with existing official brand stores.</p>
+        <div class="sponsor-store-brand">Official store preview · <strong id="sponsor-store-name">NIKE</strong></div>
+        <div class="sponsor-store-preview-frame">
+          <img id="sponsor-store-preview" src="./assets/nike-store-preview.png" alt="NIKE official store preview" />
+          <div class="sponsor-store-fallback" id="sponsor-store-fallback" hidden>Official store preview</div>
+        </div>
+        <p class="sponsor-store-footer">Demo preview only — existing Web2 commerce platforms remain unchanged.</p>
+        <div class="sponsor-store-actions">
+          <button class="secondary-action" id="close-sponsor-store" type="button">Close</button>
+          <button class="primary-action" id="visit-sponsor-store" type="button">Visit Official Store</button>
+        </div>
+      </div>
+    </div>
+
     <div class="settlement-celebration" id="settlement-celebration" hidden aria-live="polite">
       <div class="celebration-burst" aria-hidden="true">
         <i style="--x: -128px; --y: -72px; --r: -24deg; --c: #26c4b8"></i>
@@ -1032,7 +1051,7 @@
     </div>
 
     <div class="toast" id="toast">Workout verified privately. Challenge state updated on Rialo.</div>
-    <script src="./script.js?v=wallet-disconnect-reservations-v1"></script>
+    <script src="./script.js?v=sponsor-store-preview-v1"></script>
   </body>
 </html>
 
