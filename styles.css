@@ -6284,6 +6284,10 @@ body.wallet-connected .score-number {
   text-align: center;
 }
 
+.flow-unit-label-sub {
+  font-size: 80%;
+}
+
 .flow-block {
   min-height: 190px;
   display: grid;
