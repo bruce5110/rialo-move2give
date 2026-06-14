@@ -5772,6 +5772,125 @@ body.wallet-connected .score-number {
   cursor: default;
 }
 
+.join-contract-cta.participating {
+  border-color: rgba(23, 184, 148, 0.28);
+  background:
+    linear-gradient(135deg, rgba(232, 255, 242, 0.96), rgba(247, 255, 252, 0.94));
+  box-shadow:
+    0 18px 32px rgba(17, 48, 38, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.58);
+  overflow: hidden;
+}
+
+.join-contract-cta.participating #join-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-width: 0;
+  padding-right: 132px;
+  border-color: rgba(23, 184, 148, 0.22);
+  background: linear-gradient(135deg, rgba(246, 255, 251, 0.94), rgba(225, 255, 244, 0.92));
+  color: #063f2a !important;
+  font-size: 19px !important;
+  cursor: default;
+}
+
+.join-contract-cta.participating #join-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 42%;
+  background:
+    linear-gradient(90deg, transparent, rgba(23, 184, 148, 0.34), rgba(142, 232, 208, 0.46), transparent);
+  filter: blur(0.2px);
+  transform: translateX(-130%) skewX(-16deg);
+  animation: participatingProgressBand 2.1s ease-in-out infinite;
+}
+
+.join-contract-cta.participating #join-btn span,
+.join-contract-cta.participating #join-btn .participating-status-main,
+.join-contract-cta.participating #join-btn .participating-status-detail {
+  position: relative;
+  z-index: 1;
+  color: #063f2a !important;
+  font-family: inherit;
+  font-size: 19px !important;
+  line-height: 1;
+  text-align: center;
+}
+
+.join-contract-cta.participating #join-btn .participating-status-main {
+  font-weight: 950;
+}
+
+.join-contract-cta.participating #join-btn .participating-status-detail {
+  font-weight: 920;
+  white-space: nowrap;
+}
+
+@keyframes participatingProgressBand {
+  0% { transform: translateX(-140%) skewX(-16deg); opacity: 0; }
+  10% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateX(240%) skewX(-16deg); opacity: 0; }
+}
+
+.lucky-airdrop-status-button {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: auto !important;
+  min-height: 32px !important;
+  padding: 7px 12px !important;
+  border: 1px solid rgba(23, 184, 148, 0.5) !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, #eafff5, #c9fff0) !important;
+  color: #0b6b42 !important;
+  font-size: 13px !important;
+  font-weight: 950 !important;
+  box-shadow: 0 0 0 rgba(23, 184, 148, 0);
+  cursor: pointer !important;
+  animation: luckyStatusPulse 1.6s ease-in-out infinite;
+}
+
+.lucky-airdrop-status-button.drop-received {
+  min-width: 150px !important;
+  border-color: rgba(23, 184, 148, 0.66) !important;
+  background: linear-gradient(135deg, #d8fff3, #aef7e4) !important;
+  animation: luckyReceivedPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes luckyStatusPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(23, 184, 148, 0);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(23, 184, 148, 0.42);
+    filter: brightness(1.05);
+  }
+}
+
+@keyframes luckyReceivedPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(23, 184, 148, 0);
+    filter: brightness(1);
+    opacity: 0.9;
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(23, 184, 148, 0.55);
+    filter: brightness(1.06);
+    opacity: 1;
+  }
+}
+
 .flow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -7538,8 +7657,15 @@ body.wallet-connected .dashboard-empty {
 .health-summary-grid,
 .donation-summary-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
+}
+
+.health-summary-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.donation-summary-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .health-summary-grid article,
@@ -8985,6 +9111,7 @@ body.wallet-connected .dashboard-empty {
 }
 
 #activity .donation-summary-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 6px;
 }
 
@@ -8995,7 +9122,7 @@ body.wallet-connected .dashboard-empty {
 }
 
 #activity .donation-summary-grid article span {
-  font-size: 12.5px;
+  font-size: 11.5px;
   line-height: 1.05;
   font-weight: 850;
 }
@@ -9007,7 +9134,7 @@ body.wallet-connected .dashboard-empty {
 }
 
 #activity .donation-summary-grid article small {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.05;
   font-weight: 750;
 }
@@ -12028,6 +12155,358 @@ button:disabled {
 
 .sponsor-store-modal[hidden] {
   display: none;
+}
+
+.lucky-airdrop-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 92;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  pointer-events: none;
+  background: transparent;
+  overflow: hidden;
+}
+
+.lucky-airdrop-modal[hidden] {
+  display: none;
+}
+
+.lucky-drop-stage {
+  position: relative;
+  width: min(430px, 44vw);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.lucky-drop-stage::before {
+  content: "";
+  position: absolute;
+  inset: 14% 20% 6%;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(142, 232, 208, 0.42), rgba(23, 184, 148, 0.12) 42%, transparent 70%);
+  filter: blur(10px);
+  opacity: 0;
+  animation: luckyDropGlow 3.2s ease-in-out both;
+}
+
+.lucky-drop-gift {
+  width: min(360px, 34vw);
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 24px 42px rgba(12, 99, 76, 0.28));
+  transform-origin: center bottom;
+  animation: luckyGiftDrop 3.2s cubic-bezier(0.2, 0.85, 0.22, 1) both;
+}
+
+@keyframes luckyGiftDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-58vh) scale(0.88) rotate(-5deg);
+  }
+  38% {
+    opacity: 1;
+    transform: translateY(0) scale(1.04) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-18px) scale(0.99) rotate(-1deg);
+  }
+  60% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  68%, 78%, 88%, 98% {
+    opacity: 1;
+  }
+  73%, 83%, 93% {
+    opacity: 0.18;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0) scale(0.98) rotate(0deg);
+  }
+}
+
+@keyframes luckyDropGlow {
+  0% {
+    opacity: 0;
+    transform: scale(0.68);
+  }
+  38% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  78% {
+    opacity: 0.82;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+}
+
+.airdrop-barcode {
+  height: 72px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid rgba(20, 35, 29, 0.12);
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.9), rgba(232,255,242,0.76));
+}
+
+.airdrop-barcode i {
+  display: block;
+  width: var(--bar-width, 4px);
+  border-radius: 999px;
+  background: #18382e;
+}
+
+.airdrop-barcode i:nth-child(2n) {
+  --bar-width: 2px;
+  opacity: 0.72;
+}
+
+.airdrop-barcode i:nth-child(3n) {
+  --bar-width: 7px;
+}
+
+.airdrop-barcode i:nth-child(5n) {
+  --bar-width: 3px;
+  opacity: 0.86;
+}
+
+.lucky-airdrop-saved {
+  width: fit-content;
+  margin: 2px auto 10px;
+  padding: 7px 12px;
+  border: 1px solid rgba(28, 139, 90, 0.22);
+  border-radius: 999px;
+  background: rgba(232, 255, 242, 0.82);
+  color: #0b6b42;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.lucky-airdrop-provider {
+  text-align: center;
+}
+
+.lucky-drops-wallet-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 93;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(7, 18, 14, 0.44);
+  backdrop-filter: blur(7px);
+}
+
+.lucky-drops-wallet-modal[hidden] {
+  display: none;
+}
+
+.lucky-drops-wallet-panel {
+  position: relative;
+  width: min(520px, 94vw);
+  padding: 24px;
+  border: 1px solid rgba(28, 139, 90, 0.3);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 88% 0%, rgba(38, 196, 184, 0.18), transparent 34%),
+    linear-gradient(135deg, #f7fffb, #e9f8f2);
+  box-shadow: 0 34px 90px rgba(7, 18, 14, 0.34);
+  color: #14382d;
+}
+
+.lucky-drops-wallet-modal.show .lucky-drops-wallet-panel {
+  animation: receiptPanelIn 300ms ease both;
+}
+
+.lucky-drops-wallet-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(20, 35, 29, 0.18);
+  border-radius: 999px;
+  background: #f7fbf8;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.lucky-drops-wallet-panel h3 {
+  margin: 7px 42px 14px 0;
+  color: #102c23;
+  font-size: 32px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.wallet-drop-card {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid rgba(28, 139, 90, 0.22);
+  border-radius: 16px;
+  background:
+    linear-gradient(90deg, rgba(28, 139, 90, 0.14) 0 2px, transparent 2px 14px),
+    rgba(255, 255, 255, 0.78);
+  box-shadow: 0 16px 34px rgba(17, 48, 38, 0.1);
+  overflow: hidden;
+}
+
+.wallet-drop-card > span {
+  color: #14382d;
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.wallet-drop-card > strong {
+  color: #0b6b42;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.wallet-drop-code {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 15px;
+  border: 1px dashed rgba(13, 111, 72, 0.35);
+  border-radius: 13px;
+  background:
+    radial-gradient(circle at 96% 15%, rgba(23, 184, 148, 0.18), transparent 30%),
+    #eafff5;
+}
+
+.wallet-drop-code small {
+  color: #41564d;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.wallet-drop-code b {
+  color: #064d32;
+  font-size: 34px;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  font-family: "Courier New", ui-monospace, SFMono-Regular, monospace;
+}
+
+.wallet-drop-valid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(23, 184, 148, 0.22);
+  border-radius: 13px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(229, 255, 246, 0.86));
+}
+
+.wallet-drop-valid small {
+  color: #41564d;
+  font-size: 13px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.wallet-drop-valid b {
+  color: #0b6b42;
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.wallet-drop-card em,
+.wallet-drop-card p {
+  margin: 0;
+  color: #405047;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 850;
+}
+
+.wallet-barcode {
+  width: 100%;
+  height: 104px;
+  gap: 5px;
+  padding: 12px 18px 10px;
+  border-color: rgba(20, 35, 29, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(246,255,251,0.9));
+}
+
+.wallet-barcode i {
+  width: var(--bar-width, 5px);
+}
+
+.wallet-barcode i:nth-child(2n) {
+  --bar-width: 3px;
+}
+
+.wallet-barcode i:nth-child(3n) {
+  --bar-width: 9px;
+}
+
+.wallet-barcode i:nth-child(4n) {
+  --bar-width: 2px;
+}
+
+.wallet-barcode i:nth-child(7n) {
+  --bar-width: 11px;
+}
+
+.wallet-barcode-number {
+  margin-top: -7px;
+  color: #18382e;
+  text-align: center;
+  font-family: "Courier New", ui-monospace, SFMono-Regular, monospace;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+}
+
+.used-coupon-stamp {
+  position: absolute;
+  top: 78px;
+  right: 22px;
+  z-index: 3;
+  display: none;
+  transform: rotate(-17deg);
+  padding: 9px 18px;
+  border: 3px solid rgba(78, 82, 80, 0.72);
+  border-radius: 8px;
+  color: rgba(62, 66, 64, 0.78);
+  font-size: 30px;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 2px rgba(78, 82, 80, 0.2);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.lucky-drops-wallet-modal.used-drop .used-coupon-stamp {
+  display: block;
+}
+
+.lucky-drops-wallet-panel .secondary-action {
+  width: 100%;
+  margin-top: 14px;
 }
 
 .profile-modal {
@@ -17006,6 +17485,68 @@ body {
     0 12px 24px rgba(17, 48, 38, 0.12);
 }
 
+#activity .lucky-drops-wallet-card {
+  border-color: rgba(23, 184, 148, 0.34);
+  background:
+    radial-gradient(circle at 50% 5%, rgba(142, 232, 208, 0.48), transparent 50%),
+    linear-gradient(135deg, rgba(232, 255, 242, 0.96), rgba(255, 255, 255, 0.86));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+}
+
+#activity .lucky-drops-wallet-card:hover,
+#activity .lucky-drops-wallet-card:focus-visible {
+  border-color: rgba(23, 184, 148, 0.62);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.76),
+    0 0 18px rgba(23, 184, 148, 0.26);
+}
+
+#activity .receipt-card-grid .lucky-drops-wallet-card.selected {
+  border-color: rgba(28, 139, 90, 0.82);
+  box-shadow:
+    inset 0 0 0 2px rgba(28, 139, 90, 0.24),
+    0 0 0 1px rgba(28, 139, 90, 0.08),
+    0 12px 24px rgba(17, 48, 38, 0.14);
+}
+
+#activity .lucky-drops-receipt {
+  width: 84px;
+  height: 54px;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  filter: drop-shadow(0 0 10px rgba(23, 184, 148, 0.28));
+}
+
+#activity .lucky-drops-wallet-card .donation-wallet-card-title {
+  color: #0b6b42;
+}
+
+#activity .lucky-drops-wallet-card .donation-wallet-card-detail {
+  color: #315849;
+}
+
+#activity .lucky-drops-wallet-card.lucky-wallet-highlight {
+  animation: luckyWalletHighlight 900ms ease-in-out 3;
+}
+
+@keyframes luckyWalletHighlight {
+  0%, 100% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.76),
+      0 0 0 rgba(23, 184, 148, 0);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow:
+      inset 0 0 0 2px rgba(23, 184, 148, 0.22),
+      0 0 28px rgba(23, 184, 148, 0.52);
+    transform: translateY(-2px);
+  }
+}
+
 #activity .receipt-add-ngo {
   grid-template-rows: 42px auto auto;
   cursor: pointer;
@@ -17482,6 +18023,10 @@ body {
 
 #activity .donation-history-table > div[hidden] {
   display: none;
+}
+
+#activity .donation-history-table[hidden] {
+  display: none !important;
 }
 
 #activity .donation-history-table .history-head {
@@ -18221,11 +18766,122 @@ body {
 #activity .donation-receipt-dashboard.donation-data-locked .donation-summary-grid strong,
 #activity .donation-receipt-dashboard.donation-data-locked .donation-summary-grid small,
 #activity .donation-receipt-dashboard.donation-data-locked .donation-wallet-card-detail,
-#activity .donation-receipt-dashboard.donation-data-locked .history-filter-reset,
+#activity .donation-receipt-dashboard.donation-data-locked .history-filter-reset:not(.lucky-history-back),
 #activity .donation-receipt-dashboard.donation-data-locked .donation-history-table > div:not(.history-head) {
   visibility: hidden !important;
 }
 
 #activity .donation-receipt-dashboard.donation-data-locked .receipt-wallet-head span {
   visibility: hidden;
+}
+
+#activity .donation-receipt-dashboard.donation-data-locked .donation-history-card.lucky-drop-history-mode .receipt-wallet-head span,
+#activity .donation-receipt-dashboard.donation-data-locked .donation-history-card.lucky-drop-history-mode .lucky-history-back,
+#activity .donation-receipt-dashboard.donation-data-locked .donation-history-card.lucky-drop-history-mode .lucky-drop-history-table > div:not(.history-head) {
+  visibility: visible !important;
+}
+
+/* Final dashboard donation summary: five compact sections in one row. */
+#activity .donation-summary-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+#activity .donation-summary-grid article {
+  min-width: 0;
+  padding-inline: 6px;
+}
+
+#activity .donation-summary-grid article span {
+  font-size: 13.4px;
+  line-height: 1.05;
+}
+
+#activity .donation-summary-grid article small {
+  font-size: 10.8px;
+  line-height: 1.05;
+}
+
+#activity .donation-summary-grid .lucky-drop-stat {
+  background:
+    radial-gradient(circle at 92% 12%, rgba(23, 184, 148, 0.2), transparent 38%),
+    rgba(255, 255, 255, 0.76);
+}
+
+#activity .donation-history-card.lucky-drop-history-mode .donation-history-table:not(.lucky-drop-history-table) {
+  display: none !important;
+}
+
+#activity .donation-history-card.lucky-drop-history-mode .lucky-drop-history-table:not([hidden]) {
+  display: block;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+  max-height: none;
+  overflow-y: auto;
+}
+
+#activity .lucky-drop-history-table > div {
+  grid-template-columns:
+    minmax(154px, 1.15fr)
+    minmax(190px, 1.35fr)
+    minmax(62px, 0.45fr)
+    minmax(72px, 0.48fr);
+  column-gap: 10px;
+}
+
+#activity .lucky-drop-history-table > div > span:nth-child(5) {
+  display: inline;
+}
+
+#activity .lucky-drop-history-table .lucky-drop-history-row {
+  cursor: pointer;
+}
+
+#activity .lucky-drop-history-table .lucky-drop-history-row:hover,
+#activity .lucky-drop-history-table .lucky-drop-history-row:focus-visible {
+  outline: none;
+  background: rgba(224, 255, 242, 0.86);
+}
+
+#activity .lucky-drop-history-table .lucky-drop-history-row > span:first-child {
+  color: #0d6f48;
+  font-weight: 950;
+  text-decoration: underline;
+  text-decoration-color: rgba(13, 111, 72, 0.45);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+#activity .lucky-drop-status {
+  justify-self: start;
+  min-width: 58px;
+  text-align: center;
+}
+
+#activity .lucky-drop-status.active {
+  border-color: rgba(23, 184, 148, 0.35);
+  background: #dffff3;
+  color: #08724d;
+}
+
+#activity .lucky-drop-status.used {
+  border-color: rgba(84, 102, 94, 0.2);
+  background: #edf1ee;
+  color: #596861;
+}
+
+#activity .lucky-history-back {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.lucky-drops-detail-status {
+  justify-self: start;
+  padding: 6px 10px;
+  border: 1px solid rgba(23, 184, 148, 0.28);
+  border-radius: 999px;
+  background: #eafff5;
+  color: #0b6b42;
+  font-size: 13px;
+  font-weight: 950;
 }

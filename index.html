@@ -1107,10 +1107,11 @@
                 <span>Your donation history and receipt wallet will appear after your wallet is connected.</span>
               </div>
               <div class="donation-summary-grid">
-                <article class="donated-stat"><span>This Month Donated</span><strong>$134</strong><small>my donation</small></article>
-                <article class="match-stat"><span>Sponsor Match Unlocked</span><strong>$268</strong><small>verified goals</small></article>
-                <article class="total-stat"><span>Total Donation Created</span><strong>$402</strong><small>sent to NGOs</small></article>
-                <article class="receipt-stat"><span>Receipts Issued</span><strong>6</strong><small>tax filing ready</small></article>
+                <article class="donated-stat"><span>This Month Donated</span><strong>$281</strong></article>
+                <article class="match-stat"><span>Sponsor Match Unlocked</span><strong>$562</strong></article>
+                <article class="total-stat"><span>Total Donation Created</span><strong>$843</strong></article>
+                <article class="receipt-stat"><span>Receipts Issued</span><strong>12</strong></article>
+                <article class="lucky-drop-stat"><span>Lucky Drop Received</span><strong>3</strong></article>
               </div>
 
               <div class="donation-lower-grid">
@@ -1122,15 +1123,15 @@
                   <div class="receipt-card-grid">
                     <div class="receipt-card receipt-unicef" role="button" tabindex="0" data-ngo-filter-card="unicef">
                       <div class="donation-wallet-card-logo-zone"><span class="receipt-logo donation-wallet-card-logo unicef-receipt"></span></div>
-                      <div class="donation-wallet-card-text-zone"><b class="donation-wallet-card-title">UNICEF</b><small class="donation-wallet-card-detail">2 receipts · $35</small></div>
+                      <div class="donation-wallet-card-text-zone"><b class="donation-wallet-card-title">UNICEF</b><small class="donation-wallet-card-detail">4 receipts · $75</small></div>
                     </div>
                     <div class="receipt-card receipt-redcross" role="button" tabindex="0" data-ngo-filter-card="redcross">
                       <div class="donation-wallet-card-logo-zone"><span class="receipt-logo donation-wallet-card-logo redcross-receipt"></span></div>
-                      <div class="donation-wallet-card-text-zone"><b class="donation-wallet-card-title">Red Cross</b><small class="donation-wallet-card-detail">2 receipts · $46</small></div>
+                      <div class="donation-wallet-card-text-zone"><b class="donation-wallet-card-title">Red Cross</b><small class="donation-wallet-card-detail">4 receipts · $96</small></div>
                     </div>
                     <div class="receipt-card receipt-greenpeace" role="button" tabindex="0" data-ngo-filter-card="greenpeace">
                       <div class="donation-wallet-card-logo-zone"><span class="receipt-logo donation-wallet-card-logo greenpeace-receipt"></span></div>
-                      <div class="donation-wallet-card-text-zone"><b class="donation-wallet-card-title">Greenpeace</b><small class="donation-wallet-card-detail">2 receipts · $53</small></div>
+                      <div class="donation-wallet-card-text-zone"><b class="donation-wallet-card-title">Greenpeace</b><small class="donation-wallet-card-detail">4 receipts · $110</small></div>
                     </div>
                     <div class="receipt-card receipt-water" role="button" tabindex="0" data-ngo-filter-card="water">
                       <div class="donation-wallet-card-logo-zone"><span class="receipt-logo donation-wallet-card-logo water-receipt"></span></div>
@@ -1140,27 +1141,28 @@
                       <div class="donation-wallet-card-logo-zone"><span class="receipt-logo donation-wallet-card-logo refugee-receipt"></span></div>
                       <div class="donation-wallet-card-text-zone"><b class="donation-wallet-card-title">Refugee Support</b><small class="donation-wallet-card-detail">Setup required</small></div>
                     </div>
-                    <div class="receipt-card receipt-add-ngo" role="button" tabindex="0" data-add-ngo-card aria-haspopup="true" aria-expanded="false">
-                      <div class="donation-wallet-card-logo-zone"><span class="receipt-logo donation-wallet-card-logo add-ngo-receipt">+</span></div>
-                      <div class="donation-wallet-card-text-zone"><b class="donation-wallet-card-title">+ Add NGO</b><small class="donation-wallet-card-detail">Setup required</small></div>
+                    <div class="receipt-card lucky-drops-wallet-card" role="button" tabindex="0" data-lucky-drops-wallet-card aria-haspopup="dialog">
+                      <div class="donation-wallet-card-logo-zone"><img class="receipt-logo donation-wallet-card-logo lucky-drops-receipt" src="./assets/LuckyDrop_2.png" alt="" /></div>
+                      <div class="donation-wallet-card-text-zone"><b class="donation-wallet-card-title">Lucky Drop Wallet</b><small class="donation-wallet-card-detail">1 active drop</small></div>
                     </div>
-                  </div>
-                  <div class="ngo-add-picker" data-ngo-add-picker aria-label="Add NGO options">
-                    <button type="button" data-add-ngo-option="medical">Medical Relief</button>
-                    <button type="button" data-add-ngo-option="children">Save the Children</button>
-                    <button type="button" data-add-ngo-option="doctors">Doctors Without Borders</button>
-                    <button type="button" data-add-ngo-option="vision">World Vision</button>
                   </div>
                 </article>
 
                 <article class="donation-history-card">
                   <div class="receipt-wallet-head">
-                    <strong>Donation History</strong>
-                    <span>Personal giving record</span>
+                    <strong id="donation-history-title">Donation History</strong>
+                    <span id="donation-history-subtitle">Personal giving record</span>
                     <button class="history-filter-reset" type="button" data-ngo-filter-reset hidden>All</button>
+                    <button class="history-filter-reset lucky-history-back" type="button" data-lucky-history-back hidden>Back to Donation History</button>
                   </div>
                   <div class="donation-history-table">
                     <div class="history-head"><span>Program</span><span>Date</span><span>My Donation</span><span>Sponsor Match</span><span>NGO</span><span>Receipt Status</span></div>
+                    <div data-ngo-history-tags="unicef children-first education children"><span>Children First Run Match</span><span>Jun 17</span><span>$22</span><span>$44</span><span class="history-ngo history-unicef">UNICEF</span><b>Receipt Issued</b></div>
+                    <div data-ngo-history-tags="redcross red-cross disaster emergency disaster-relief"><span>Disaster Recovery Cycling Match</span><span>Jun 16</span><span>$27</span><span>$54</span><span class="history-ngo history-redcross">Red Cross</span><b>Receipt Issued</b></div>
+                    <div data-ngo-history-tags="greenpeace climate climate-action"><span>Greenpeace Morning Steps</span><span>Jun 15</span><span>$31</span><span>$62</span><span class="history-ngo history-greenpeace">Greenpeace</span><b>Receipt Issued</b></div>
+                    <div data-ngo-history-tags="unicef children-first education children"><span>Education Walk Donation Route</span><span>Jun 13</span><span>$18</span><span>$36</span><span class="history-ngo history-unicef">UNICEF</span><b>Receipt Issued</b></div>
+                    <div data-ngo-history-tags="redcross red-cross emergency-aid emergency"><span>Red Cross Evening Ride</span><span>Jun 12</span><span>$23</span><span>$46</span><span class="history-ngo history-redcross">Red Cross</span><b>Receipt Issued</b></div>
+                    <div data-ngo-history-tags="greenpeace climate-action climate"><span>Climate Action Swim Match</span><span>Jun 11</span><span>$26</span><span>$52</span><span class="history-ngo history-greenpeace">Greenpeace</span><b>Receipt Issued</b></div>
                     <div data-ngo-history-tags="unicef children-first education children"><span>Morning Miles for Children First</span><span>Jun 10</span><span>$19</span><span>$38</span><span class="history-ngo history-unicef">UNICEF</span><b>Receipt Issued</b></div>
                     <div data-ngo-history-tags="redcross red-cross disaster emergency disaster-relief"><span>Red Cross Recovery Walk</span><span>Jun 09</span><span>$25</span><span>$50</span><span class="history-ngo history-redcross">Red Cross</span><b>Receipt Issued</b></div>
                     <div data-ngo-history-tags="greenpeace climate climate-action"><span>Climate Ride Match</span><span>Jun 08</span><span>$29</span><span>$58</span><span class="history-ngo history-greenpeace">Greenpeace</span><b>Receipt Issued</b></div>
@@ -1183,6 +1185,18 @@
                     <div data-ngo-history-tags="greenpeace climate-action climate"><span>Low-Carbon Morning Steps</span><span>May 05</span><span>$11</span><span>-</span><span class="history-ngo history-greenpeace">Greenpeace</span><b>Receipt Issued</b></div>
                     <div data-ngo-history-tags="redcross red-cross disaster-relief disaster"><span>Disaster Relief Strength Streak</span><span>May 04</span><span>$22</span><span>-</span><span class="history-ngo history-redcross">Red Cross</span><b>Receipt Issued</b></div>
                     <div data-ngo-history-tags="unicef children-first education children"><span>Children First Weekend Steps</span><span>May 02</span><span>$14</span><span>-</span><span class="history-ngo history-unicef">UNICEF</span><b>Receipt Issued</b></div>
+                  </div>
+                  <div class="donation-history-table lucky-drop-history-table" data-lucky-drop-history-table hidden>
+                    <div class="history-head"><span>Drop</span><span>Challenge</span><span>Date</span><span>Status</span></div>
+                    <div class="lucky-drop-history-row" role="button" tabindex="0" data-lucky-drop-history="ecobottle">
+                      <span>EcoBottle 15% OFF</span><span>Clean Water Donation Challenge</span><span>Jun 12</span><b class="lucky-drop-status active">Active</b>
+                    </div>
+                    <div class="lucky-drop-history-row" role="button" tabindex="0" data-lucky-drop-history="rungear">
+                      <span>Sunblock Cream 20% OFF</span><span>Han River Donation Challenge</span><span>May 20</span><b class="lucky-drop-status used">Used</b>
+                    </div>
+                    <div class="lucky-drop-history-row" role="button" tabindex="0" data-lucky-drop-history="greencafe">
+                      <span>Green Cafe 20% OFF</span><span>Han River Donation Challenge</span><span>May 05</span><b class="lucky-drop-status used">Used</b>
+                    </div>
                   </div>
                 </article>
               </div>
@@ -1212,7 +1226,7 @@
               <div class="challenge-grid daily-program-grid">
                 <article class="challenge-card selected" data-challenge="run-100">
                   <div class="program-visual daily-walk-scene"><span>Clean Water</span></div>
-                  <div class="reward-rule">Jun 1 → Jun 7, 2026</div>
+                  <div class="reward-rule">Jun 12 → Jun 18, 2026</div>
                   <h3>7-Day Walk for Clean Water</h3>
                   <div class="stats">
                     <span>Min. Contribution <b>$10</b></span>
@@ -1223,7 +1237,7 @@
 
                 <article class="challenge-card" data-challenge="morning-run">
                   <div class="program-visual daily-run-scene"><span>Education</span></div>
-                  <div class="reward-rule">Jun 3 → Jun 14, 2026</div>
+                  <div class="reward-rule">Jun 19 → Jun 27, 2026</div>
                   <h3>Morning Run for Children's Education</h3>
                   <div class="stats">
                     <span>Min. Contribution <b>$15</b></span>
@@ -1234,7 +1248,7 @@
 
                 <article class="challenge-card" data-challenge="night-5k">
                   <div class="program-visual daily-cycle-scene"><span>Hunger Relief</span></div>
-                  <div class="reward-rule">Jun 8 → Jun 22, 2026</div>
+                  <div class="reward-rule">Jun 20 → Jun 30, 2026</div>
                   <h3>Weekend Cycling for Hunger Relief</h3>
                   <div class="stats">
                     <span>Min. Contribution <b>$20</b></span>
@@ -1245,7 +1259,7 @@
 
                 <article class="challenge-card" data-challenge="swim-water">
                   <div class="program-visual daily-swim-scene"><span>Medical Relief</span></div>
-                  <div class="reward-rule">Jun 10 → Jul 1, 2026</div>
+                  <div class="reward-rule">July 3 → July 10, 2026</div>
                   <h3>Swim for Medical Relief</h3>
                   <div class="stats">
                     <span>Min. Contribution <b>$25</b></span>
@@ -1261,9 +1275,20 @@
                 <span class="eyebrow">Special Event</span>
               </div>
               <div class="special-program-grid">
+                <article class="challenge-card special-program-card hanriver-scene" data-challenge="han-river-swim">
+                  <div class="program-visual"><span>Han River</span></div>
+                  <div class="reward-rule">Jun 12 → Jun 27, 2026</div>
+                  <h3>Seoul Han River Summer Swim</h3>
+                  <div class="stats">
+                    <span>Min. Contribution <b>$20</b></span>
+                    <span>NGO <b>Ocean Cleanup</b></span>
+                    <span>Partner <b>Jinsa Galbi</b></span>
+                  </div>
+                </article>
+
                 <article class="challenge-card special-program-card paris-scene" data-challenge="paris-seine-run">
                   <div class="program-visual"><span>Paris Seine</span></div>
-                  <div class="reward-rule">Jun 1 → Jun 30, 2026</div>
+                  <div class="reward-rule">Jun 20 → Jun 30, 2026</div>
                   <h3>Paris Seine Charity Run</h3>
                   <div class="stats">
                     <span>Min. Contribution <b>$30</b></span>
@@ -1274,7 +1299,7 @@
 
                 <article class="challenge-card special-program-card tokyo-scene" data-challenge="tokyo-sakura-half">
                   <div class="program-visual"><span>Tokyo Spring</span></div>
-                  <div class="reward-rule">Jun 5 → Jun 26, 2026</div>
+                  <div class="reward-rule">Jun 18 → Jun 30, 2026</div>
                   <h3>Tokyo Cherry Blossom Half Marathon</h3>
                   <div class="stats">
                     <span>Min. Contribution <b>$25</b></span>
@@ -1285,23 +1310,12 @@
 
                 <article class="challenge-card special-program-card swiss-scene" data-challenge="swiss-hill-cycling">
                   <div class="program-visual"><span>Swiss Hills</span></div>
-                  <div class="reward-rule">Jun 12 → Jul 10, 2026</div>
+                  <div class="reward-rule">July 1 → July 8, 2026</div>
                   <h3>Swiss Hill Cycling Program</h3>
                   <div class="stats">
                     <span>Min. Contribution <b>$30</b></span>
                     <span>NGO <b>Disaster Relief</b></span>
                     <span>Partner <b>AirBnb</b></span>
-                  </div>
-                </article>
-
-                <article class="challenge-card special-program-card hanriver-scene" data-challenge="han-river-swim">
-                  <div class="program-visual"><span>Han River</span></div>
-                  <div class="reward-rule">Jun 15 → Jun 29, 2026</div>
-                  <h3>Seoul Han River Summer Swim</h3>
-                  <div class="stats">
-                    <span>Min. Contribution <b>$20</b></span>
-                    <span>NGO <b>Ocean Cleanup</b></span>
-                    <span>Partner <b>Jinsa Galbi</b></span>
                   </div>
                 </article>
               </div>
@@ -1637,6 +1651,41 @@
           <button class="secondary-action" id="close-sponsor-store" type="button">Close</button>
           <button class="primary-action" id="visit-sponsor-store" type="button">Visit Sponsor Website</button>
         </div>
+      </div>
+    </div>
+
+    <div class="lucky-airdrop-modal" id="lucky-airdrop-modal" hidden aria-live="polite">
+      <div class="lucky-drop-stage" aria-label="Lucky Drop received">
+        <img class="lucky-drop-gift" src="./assets/LuckyDrop.png" alt="Lucky Drop gift box" />
+      </div>
+    </div>
+
+    <div class="lucky-drops-wallet-modal" id="lucky-drops-wallet-modal" hidden>
+      <div class="lucky-drops-wallet-panel" role="dialog" aria-modal="true" aria-labelledby="lucky-drops-wallet-title">
+        <button class="lucky-drops-wallet-close" id="lucky-drops-wallet-close" aria-label="Close Lucky Drop Wallet">x</button>
+        <span class="eyebrow">Saved Reward</span>
+        <h3 id="lucky-drops-wallet-title">Lucky Drop Details</h3>
+        <div class="wallet-drop-card">
+          <div class="used-coupon-stamp" id="lucky-drops-used-stamp" aria-hidden="true">USED</div>
+          <span id="lucky-drops-reward">EcoBottle 15% OFF</span>
+          <strong id="lucky-drops-source">From Clean Water Donation Challenge</strong>
+          <em class="lucky-drops-detail-status" id="lucky-drops-detail-status">Status: Active</em>
+          <div class="wallet-drop-code">
+            <small>Discount Code</small>
+            <b id="lucky-drops-code">RIALO15</b>
+          </div>
+          <div class="wallet-drop-valid">
+            <small>Valid Until</small>
+            <b id="lucky-drops-valid">Dec 18, 2026</b>
+          </div>
+          <small class="wallet-barcode-label">In-store Barcode</small>
+          <div class="airdrop-barcode wallet-barcode" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <small class="wallet-barcode-number" id="lucky-drops-barcode-number">8 802 321 041 578</small>
+          <p id="lucky-drops-provider">Provided by EcoBottle Sponsor</p>
+        </div>
+        <button class="secondary-action" id="close-lucky-drops-wallet" type="button">Download</button>
       </div>
     </div>
 

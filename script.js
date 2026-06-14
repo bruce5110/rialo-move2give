@@ -66,6 +66,23 @@ const sponsorStoreFallback = document.querySelector("#sponsor-store-fallback");
 const sponsorStoreName = document.querySelector("#sponsor-store-name");
 const visitSponsorStoreButton = document.querySelector("#visit-sponsor-store");
 const closeSponsorStoreButton = document.querySelector("#close-sponsor-store");
+const luckyAirDropModal = document.querySelector("#lucky-airdrop-modal");
+const luckyDropsWalletModal = document.querySelector("#lucky-drops-wallet-modal");
+const luckyDropsWalletClose = document.querySelector("#lucky-drops-wallet-close");
+const closeLuckyDropsWalletButton = document.querySelector("#close-lucky-drops-wallet");
+const luckyDropsReward = document.querySelector("#lucky-drops-reward");
+const luckyDropsSource = document.querySelector("#lucky-drops-source");
+const luckyDropsDetailStatus = document.querySelector("#lucky-drops-detail-status");
+const luckyDropsCode = document.querySelector("#lucky-drops-code");
+const luckyDropsValid = document.querySelector("#lucky-drops-valid");
+const luckyDropsBarcodeNumber = document.querySelector("#lucky-drops-barcode-number");
+const luckyDropsProvider = document.querySelector("#lucky-drops-provider");
+const luckyDropsUsedStamp = document.querySelector("#lucky-drops-used-stamp");
+const luckyDropsWalletCard = document.querySelector("[data-lucky-drops-wallet-card]");
+const donationHistoryTitle = document.querySelector("#donation-history-title");
+const donationHistorySubtitle = document.querySelector("#donation-history-subtitle");
+const luckyDropHistoryTable = document.querySelector("[data-lucky-drop-history-table]");
+const luckyDropHistoryBack = document.querySelector("[data-lucky-history-back]");
 const currentStatusBadge = document.querySelector("#current-status-badge");
 const currentStatusCard = document.querySelector(".current-status");
 const historyModal = document.querySelector("#history-modal");
@@ -191,7 +208,8 @@ let currentRewardAllocation = {
 let activeDashboardPeriod = "monthly";
 let activeDashboardWorkout = "walking";
 let openDashboardPeriodMenu = "";
-const todayForDashboardPeriodMenu = new Date();
+const dashboardDemoToday = new Date(2026, 5, 17);
+const todayForDashboardPeriodMenu = dashboardDemoToday;
 const dashboardPeriodMenuState = {
   weekly: `${Math.min(5, Math.floor((todayForDashboardPeriodMenu.getDate() - 1) / 7) + 1)}week`,
   monthly: todayForDashboardPeriodMenu.toLocaleString("en-US", { month: "long" }),
@@ -1068,46 +1086,46 @@ const dashboardActivityMockData = {
     June: {
       label: "June",
       title: "June 2026",
-      summary: { activeDays: "10", activeTrend: "Updated through Jun 10", time: "11 h 14 m", timeTrend: "Live June activity", calories: "7,790 kcal", caloriesTrend: "Verified through today", score: "94", scoreTrend: "Current June score" },
-      rings: { movement: 88, consistency: 82, recovery: 80, total: 86 },
-      labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-      axisLabels: ["Jun 1", "Jun 2", "Jun 3", "Jun 4", "Jun 5", "Jun 6", "Jun 7", "Jun 8", "Jun 9", "Jun 10"],
+      summary: { activeDays: "17", activeTrend: "Updated through Jun 17", time: "19 h 48 m", timeTrend: "Live June activity", calories: "14,860 kcal", caloriesTrend: "Verified through Jun 17", score: "94", scoreTrend: "Current June score" },
+      rings: { movement: 92, consistency: 88, recovery: 80, total: 90 },
+      labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"],
+      axisLabels: ["Jun 1", "Jun 2", "Jun 3", "Jun 4", "Jun 5", "Jun 6", "Jun 7", "Jun 8", "Jun 9", "Jun 10", "Jun 11", "Jun 12", "Jun 13", "Jun 14", "Jun 15", "Jun 16", "Jun 17"],
       workoutCards: {
-        walking: ["72,310 steps", "48.9 km · 10 days"],
-        running: ["23.5 km", "Avg pace 6'24\"/km"],
-        cycling: ["69.8 km", "Avg speed 18.2 km/h"],
-        swimming: ["2.2 km", "44 laps · 53 min"],
-        strength: ["22 sets", "5 sessions · 1h 28m"],
+        walking: ["136,360 steps", "92.1 km · 17 days"],
+        running: ["43.5 km", "Avg pace 6'24\"/km"],
+        cycling: ["137.8 km", "Avg speed 18.2 km/h"],
+        swimming: ["4.3 km", "86 laps · 103 min"],
+        strength: ["42 sets", "10 sessions · 2h 48m"],
       },
       chartValues: {
-        walking: [4920, 5940, 6100, 7200, 6800, 8400, 7900, 8600, 7350, 9100],
-        running: [0, 3.4, 0, 4.8, 0, 5.2, 0, 0, 4.1, 6.0],
-        cycling: [8.8, 0, 9.4, 0, 14.2, 0, 20.6, 0, 0, 16.8],
-        swimming: [0, 8, 0, 0, 12, 0, 0, 14, 0, 10],
-        strength: [4, 0, 3, 0, 5, 0, 0, 4, 0, 6],
+        walking: [4920, 5940, 6100, 7200, 6800, 8400, 7900, 8600, 7350, 9100, 8800, 9400, 8250, 10100, 8700, 9600, 9200],
+        running: [0, 3.4, 0, 4.8, 0, 5.2, 0, 0, 4.1, 6.0, 0, 4.4, 0, 5.6, 0, 3.8, 6.2],
+        cycling: [8.8, 0, 9.4, 0, 14.2, 0, 20.6, 0, 0, 16.8, 12.4, 0, 18.6, 0, 21.2, 0, 15.8],
+        swimming: [0, 8, 0, 0, 12, 0, 0, 14, 0, 10, 0, 12, 0, 16, 0, 0, 14],
+        strength: [4, 0, 3, 0, 5, 0, 0, 4, 0, 6, 5, 0, 4, 0, 6, 0, 5],
       },
     },
   },
   yearly: {
     label: "This Year",
     title: "May → June 2026",
-    summary: { activeDays: "28", activeTrend: "May + June summary", time: "23 h 48 m", timeTrend: "Year-to-date demo", calories: "13,432 kcal", caloriesTrend: "Year-to-date demo", score: "90", scoreTrend: "Strong YTD activity" },
-    rings: { movement: 90, consistency: 84, recovery: 80, total: 88 },
+    summary: { activeDays: "35", activeTrend: "May + June summary", time: "32 h 22 m", timeTrend: "Year-to-date demo", calories: "20,502 kcal", caloriesTrend: "Year-to-date demo", score: "92", scoreTrend: "Strong YTD activity" },
+    rings: { movement: 92, consistency: 88, recovery: 80, total: 90 },
     labels: ["May", "June"],
     axisLabels: ["May", "June"],
     workoutCards: {
-      walking: ["140,730 steps", "95.1 km · 28 days"],
-      running: ["44.8 km", "Avg pace 6'22\"/km"],
-      cycling: ["101.6 km", "Avg speed 18.4 km/h"],
-      swimming: ["4.6 km", "92 laps · 115 min"],
-      strength: ["40 sets", "10 sessions · 6h 42m"],
+      walking: ["204,780 steps", "138.4 km · 35 days"],
+      running: ["64.8 km", "Avg pace 6'22\"/km"],
+      cycling: ["169.6 km", "Avg speed 18.4 km/h"],
+      swimming: ["6.7 km", "134 laps · 155 min"],
+      strength: ["60 sets", "15 sessions · 8h 02m"],
     },
     chartValues: {
-      walking: [68420, 72310],
-      running: [21.3, 23.5],
-      cycling: [31.8, 69.8],
-      swimming: [48, 44],
-      strength: [18, 22],
+      walking: [68420, 136360],
+      running: [21.3, 43.5],
+      cycling: [31.8, 137.8],
+      swimming: [48, 86],
+      strength: [18, 42],
     },
   },
 };
@@ -1134,7 +1152,7 @@ function getActiveDashboardActivityData() {
 }
 
 function isSelectedCurrentDashboardMonth(selectedMonth) {
-  const today = new Date();
+  const today = dashboardDemoToday;
   return selectedMonth === today.toLocaleString("en-US", { month: "long" });
 }
 
@@ -1145,7 +1163,7 @@ function getDashboardWeekStartDay(selectedWeek) {
 
 function getAvailableDashboardDayCount(selectedMonth, selectedWeek = "") {
   if (!isSelectedCurrentDashboardMonth(selectedMonth)) return Infinity;
-  const currentDay = new Date().getDate();
+  const currentDay = dashboardDemoToday.getDate();
   if (!selectedWeek) return currentDay;
   const weekStartDay = getDashboardWeekStartDay(selectedWeek);
   return Math.max(0, Math.min(7, currentDay - weekStartDay + 1));
@@ -1734,7 +1752,7 @@ function applyDashboardSelectedValueCutoff(values) {
 }
 
 function isWorkoutEntryInPast(periodKey, label, index) {
-  const today = new Date();
+  const today = dashboardDemoToday;
   if (periodKey === "weekly") {
     const todayIndex = (today.getDay() + 6) % 7;
     return index < todayIndex;
@@ -2121,11 +2139,17 @@ const submittedDonationHistoryTags = ["unicef", "children-first", "education", "
 
 const donationHistoryRowsByPeriod = {
   weekly: [
-    { tags: "unicef children-first education children", program: "Morning Miles for Children First", date: "Jun 10", donation: "$19", match: "$38", ngo: "UNICEF", ngoClass: "history-unicef", status: "Receipt Issued" },
-    { tags: "redcross red-cross disaster emergency disaster-relief", program: "Red Cross Recovery Walk", date: "Jun 09", donation: "$25", match: "$50", ngo: "Red Cross", ngoClass: "history-redcross", status: "Receipt Issued" },
-    { tags: "greenpeace climate climate-action", program: "Climate Ride Match", date: "Jun 08", donation: "$29", match: "$58", ngo: "Greenpeace", ngoClass: "history-greenpeace", status: "Receipt Issued" },
+    { tags: "unicef children-first education children", program: "Children First Run Match", date: "Jun 17", donation: "$22", match: "$44", ngo: "UNICEF", ngoClass: "history-unicef", status: "Receipt Issued" },
+    { tags: "redcross red-cross disaster emergency disaster-relief", program: "Disaster Recovery Cycling Match", date: "Jun 16", donation: "$27", match: "$54", ngo: "Red Cross", ngoClass: "history-redcross", status: "Receipt Issued" },
+    { tags: "greenpeace climate climate-action", program: "Greenpeace Morning Steps", date: "Jun 15", donation: "$31", match: "$62", ngo: "Greenpeace", ngoClass: "history-greenpeace", status: "Receipt Issued" },
   ],
   monthly: [
+    { tags: "unicef children-first education children", program: "Children First Run Match", date: "Jun 17", donation: "$22", match: "$44", ngo: "UNICEF", ngoClass: "history-unicef", status: "Receipt Issued" },
+    { tags: "redcross red-cross disaster emergency disaster-relief", program: "Disaster Recovery Cycling Match", date: "Jun 16", donation: "$27", match: "$54", ngo: "Red Cross", ngoClass: "history-redcross", status: "Receipt Issued" },
+    { tags: "greenpeace climate climate-action", program: "Greenpeace Morning Steps", date: "Jun 15", donation: "$31", match: "$62", ngo: "Greenpeace", ngoClass: "history-greenpeace", status: "Receipt Issued" },
+    { tags: "unicef children-first education children", program: "Education Walk Donation Route", date: "Jun 13", donation: "$18", match: "$36", ngo: "UNICEF", ngoClass: "history-unicef", status: "Receipt Issued" },
+    { tags: "redcross red-cross emergency-aid emergency", program: "Red Cross Evening Ride", date: "Jun 12", donation: "$23", match: "$46", ngo: "Red Cross", ngoClass: "history-redcross", status: "Receipt Issued" },
+    { tags: "greenpeace climate-action climate", program: "Climate Action Swim Match", date: "Jun 11", donation: "$26", match: "$52", ngo: "Greenpeace", ngoClass: "history-greenpeace", status: "Receipt Issued" },
     { tags: "unicef children-first education children", program: "Morning Miles for Children First", date: "Jun 10", donation: "$19", match: "$38", ngo: "UNICEF", ngoClass: "history-unicef", status: "Receipt Issued" },
     { tags: "redcross red-cross disaster emergency disaster-relief", program: "Red Cross Recovery Walk", date: "Jun 09", donation: "$25", match: "$50", ngo: "Red Cross", ngoClass: "history-redcross", status: "Receipt Issued" },
     { tags: "greenpeace climate climate-action", program: "Climate Ride Match", date: "Jun 08", donation: "$29", match: "$58", ngo: "Greenpeace", ngoClass: "history-greenpeace", status: "Receipt Issued" },
@@ -2141,6 +2165,12 @@ const donationHistoryRowsByPeriod = {
     { tags: "unicef children-first education children", program: "School Miles for Children First", date: "May 17", donation: "$20", match: "-", ngo: "UNICEF", ngoClass: "history-unicef", status: "Receipt Issued" },
   ],
   yearly: [
+    { tags: "unicef children-first education children", program: "Children First Run Match", date: "Jun 17", donation: "$22", match: "$44", ngo: "UNICEF", ngoClass: "history-unicef", status: "Receipt Issued" },
+    { tags: "redcross red-cross disaster emergency disaster-relief", program: "Disaster Recovery Cycling Match", date: "Jun 16", donation: "$27", match: "$54", ngo: "Red Cross", ngoClass: "history-redcross", status: "Receipt Issued" },
+    { tags: "greenpeace climate climate-action", program: "Greenpeace Morning Steps", date: "Jun 15", donation: "$31", match: "$62", ngo: "Greenpeace", ngoClass: "history-greenpeace", status: "Receipt Issued" },
+    { tags: "unicef children-first education children", program: "Education Walk Donation Route", date: "Jun 13", donation: "$18", match: "$36", ngo: "UNICEF", ngoClass: "history-unicef", status: "Receipt Issued" },
+    { tags: "redcross red-cross emergency-aid emergency", program: "Red Cross Evening Ride", date: "Jun 12", donation: "$23", match: "$46", ngo: "Red Cross", ngoClass: "history-redcross", status: "Receipt Issued" },
+    { tags: "greenpeace climate-action climate", program: "Climate Action Swim Match", date: "Jun 11", donation: "$26", match: "$52", ngo: "Greenpeace", ngoClass: "history-greenpeace", status: "Receipt Issued" },
     { tags: "unicef children-first education children", program: "Morning Miles for Children First", date: "Jun 10", donation: "$19", match: "$38", ngo: "UNICEF", ngoClass: "history-unicef", status: "Receipt Issued" },
     { tags: "redcross red-cross disaster emergency disaster-relief", program: "Red Cross Recovery Walk", date: "Jun 09", donation: "$25", match: "$50", ngo: "Red Cross", ngoClass: "history-redcross", status: "Receipt Issued" },
     { tags: "greenpeace climate climate-action", program: "Climate Ride Match", date: "Jun 08", donation: "$29", match: "$58", ngo: "Greenpeace", ngoClass: "history-greenpeace", status: "Receipt Issued" },
@@ -2253,11 +2283,11 @@ function setDonationHistoryFilter(filterKey = "all") {
   activeDonationNgoFilter = filterKey;
   const aliases = donationNgoFilterAliases[filterKey] || [filterKey];
   const showAll = filterKey === "all";
-  const table = document.querySelector("#activity .donation-history-table");
+  const table = document.querySelector("#activity .donation-history-table:not(.lucky-drop-history-table)");
   document.querySelectorAll("#activity [data-ngo-filter-card]").forEach((card) => {
     card.classList.toggle("selected", !showAll && card.dataset.ngoFilterCard === filterKey);
   });
-  const rows = Array.from(document.querySelectorAll("#activity .donation-history-table > div:not(.history-head):not(.history-empty-state)"));
+  const rows = Array.from(document.querySelectorAll("#activity .donation-history-table:not(.lucky-drop-history-table) > div:not(.history-head):not(.history-empty-state)"));
   rows.forEach((row) => {
     const tags = (row.dataset.ngoHistoryTags || row.textContent || "").toLowerCase();
     row.hidden = !showAll && !aliases.some((alias) => tags.includes(alias));
@@ -2806,8 +2836,8 @@ Object.assign(challengeDetails, {
     totalPool: 100,
     sponsorName: "Evian",
     rewardRule: "Sponsor Match",
-    startDate: "Jun 1, 2026",
-    endDate: "Jun 7, 2026",
+    startDate: "Jun 12, 2026",
+    endDate: "Jun 18, 2026",
     days: "7 days",
     workoutType: "Walking",
     donationTarget: "Greenpeace",
@@ -2832,9 +2862,9 @@ Object.assign(challengeDetails, {
     totalPool: 140,
     sponsorName: "NIKE",
     rewardRule: "Sponsor Match",
-    startDate: "Jun 3, 2026",
-    endDate: "Jun 14, 2026",
-    days: "12 days",
+    startDate: "Jun 19, 2026",
+    endDate: "Jun 27, 2026",
+    days: "11 days",
     workoutType: "Running",
     donationTarget: "UNICEF",
     donationLogo: "./assets/ngo-unicef.svg",
@@ -2858,9 +2888,9 @@ Object.assign(challengeDetails, {
     totalPool: 118,
     sponsorName: "RedBull",
     rewardRule: "Sponsor Match",
-    startDate: "Jun 8, 2026",
-    endDate: "Jun 22, 2026",
-    days: "15 days",
+    startDate: "Jun 20, 2026",
+    endDate: "Jun 30, 2026",
+    days: "11 days",
     workoutType: "Cycling",
     donationTarget: "UNICEF",
     donationLogo: "./assets/ngo-unicef.svg",
@@ -2884,9 +2914,9 @@ Object.assign(challengeDetails, {
     totalPool: 96,
     sponsorName: "Adidas",
     rewardRule: "Sponsor Match",
-    startDate: "Jun 15, 2026",
-    endDate: "Jul 1, 2026",
-    days: "22 days",
+    startDate: "July 3, 2026",
+    endDate: "July 10, 2026",
+    days: "8 days",
     workoutType: "Swimming",
     donationTarget: "Red Cross",
     donationLogo: "./assets/ngo-red-cross.svg",
@@ -2910,9 +2940,9 @@ Object.assign(challengeDetails, {
     totalPool: 180,
     sponsorName: "Raduree",
     rewardRule: "Sponsor Match",
-    startDate: "Jun 1, 2026",
+    startDate: "Jun 20, 2026",
     endDate: "Jun 30, 2026",
-    days: "10 days",
+    days: "14 days",
     workoutType: "Running",
     location: "Paris Seine",
     donationTarget: "Children's Education",
@@ -2937,9 +2967,9 @@ Object.assign(challengeDetails, {
     totalPool: 165,
     sponsorName: "Sushiro",
     rewardRule: "Sponsor Match",
-    startDate: "Jun 5, 2026",
-    endDate: "Jun 26, 2026",
-    days: "22 days",
+    startDate: "Jun 18, 2026",
+    endDate: "Jun 30, 2026",
+    days: "13 days",
     workoutType: "Running",
     location: "Tokyo",
     donationTarget: "Refugee Support",
@@ -2964,9 +2994,9 @@ Object.assign(challengeDetails, {
     totalPool: 162,
     sponsorName: "AirBnb",
     rewardRule: "Sponsor Match",
-    startDate: "Jun 12, 2026",
-    endDate: "Jul 10, 2026",
-    days: "29 days",
+    startDate: "July 1, 2026",
+    endDate: "July 8, 2026",
+    days: "8 days",
     workoutType: "Cycling",
     location: "Swiss Alps",
     donationTarget: "Disaster Relief",
@@ -2991,9 +3021,9 @@ Object.assign(challengeDetails, {
     totalPool: 200,
     sponsorName: "Jinsa Galbi",
     rewardRule: "Sponsor Match",
-    startDate: "Jun 15, 2026",
-    endDate: "Jun 29, 2026",
-    days: "15 days",
+    startDate: "Jun 12, 2026",
+    endDate: "Jun 27, 2026",
+    days: "16 days",
     workoutType: "Swimming",
     location: "Seoul Han River",
     donationTarget: "Ocean Cleanup",
@@ -3010,6 +3040,44 @@ Object.assign(challengeDetails, {
 
 let selectedChallenge = "run-100";
 const selectedDonationAmounts = {};
+const luckyAirDropChallengeIds = new Set(["run-100", "han-river-swim"]);
+const luckyAirDropChallengeLabels = {
+  "run-100": "Clean Water Donation Challenge",
+  "han-river-swim": "Han River Donation Challenge",
+};
+const luckyDropHistoryDetails = {
+  ecobottle: {
+    reward: "EcoBottle 15% OFF",
+    source: "Clean Water Donation Challenge",
+    code: "VX321TE",
+    valid: "Dec 18, 2026",
+    barcode: "8 802 321 041 578",
+    provider: "Provided by EcoBottle Sponsor",
+    status: "Active",
+  },
+  rungear: {
+    reward: "Sunblock Cream 20% OFF",
+    source: "Han River Donation Challenge",
+    code: "SUN20-K8P2",
+    valid: "Dec 11, 2026",
+    barcode: "8 802 117 330 921",
+    provider: "Provided by Sunblock Cream Sponsor",
+    status: "Used",
+  },
+  greencafe: {
+    reward: "Green Cafe 20% OFF",
+    source: "Han River Donation Challenge",
+    code: "GC20-M7Q9",
+    valid: "Dec 09, 2026",
+    barcode: "8 802 209 774 063",
+    provider: "Provided by Green Cafe Sponsor",
+    status: "Used",
+  },
+};
+const luckyAirDropShown = new Set();
+const luckyAirDropSaved = new Set();
+const luckyAirDropAnimating = new Set();
+let latestLuckyAirDropId = "";
 
 function getMinimumDonation(detail) {
   return Number(detail?.entryAmount ?? 10);
@@ -3205,10 +3273,40 @@ function showSport(id) {
   }
 }
 
+function dateOnly(date) {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+function parseChallengeStartDate(detail) {
+  const date = new Date(detail?.startDate || "");
+  return Number.isNaN(date.getTime()) ? null : dateOnly(date);
+}
+
+function hasChallengeStarted(detail) {
+  const startDate = parseChallengeStartDate(detail);
+  if (!startDate) return false;
+  return startDate.getTime() <= dateOnly(new Date()).getTime();
+}
+
+function getJoinStateForChallenge(detail) {
+  return hasChallengeStarted(detail) ? "participating" : "reserved";
+}
+
+function isParticipatingChallenge(id) {
+  const detail = challengeDetails[id];
+  return Boolean(detail?.isJoined && detail.joinState === "participating");
+}
+
+function isChallengeEffectivelyJoined(id) {
+  return Boolean(challengeDetails[id]?.isJoined);
+}
+
 function renderSelectedChallenge(detail) {
   if (!detail || !selectedChallengeBoard) return;
   detail = withMatchedSponsorPool(detail);
-  const isJoined = Boolean(detail.isJoined);
+  const isParticipating = isParticipatingChallenge(selectedChallenge);
+  const isJoined = isChallengeEffectivelyJoined(selectedChallenge);
+  const joinButtonLabel = isParticipating ? `<span class="participating-status-main">Participating ...</span><span class="participating-status-detail">Move2Give is tracking your workout</span>` : "Joined Donation";
   const minimumDonation = getMinimumDonation(detail);
   const selectedDonation = getSelectedDonationAmount(selectedChallenge);
   const sponsorMultiplier = getSponsorMatchMultiplier(detail);
@@ -3291,9 +3389,10 @@ function renderSelectedChallenge(detail) {
           </div>
         </article>
       </div>
-      <div class="join-contract-cta ${isJoined ? "joined" : ""}">
-        <button class="secondary-action" id="join-btn" type="button" ${isJoined ? "disabled" : ""}>${isJoined ? "Joined Donation" : "Join Donation"}</button>
-        ${isJoined ? `<button class="cancel-reservation" id="cancel-reservation" type="button">Cancel</button>` : ""}
+      <div class="join-contract-cta ${isJoined ? "joined" : ""} ${isParticipating ? "participating" : ""}">
+        <button class="secondary-action" id="join-btn" type="button" ${isJoined ? "disabled" : ""}>${isJoined ? joinButtonLabel : "Join Donation"}</button>
+        ${isParticipating && luckyAirDropChallengeIds.has(selectedChallenge) ? `<button class="lucky-airdrop-status-button ${luckyAirDropSaved.has(selectedChallenge) ? "drop-received" : ""}" id="open-lucky-drops-from-status" type="button">${luckyAirDropSaved.has(selectedChallenge) ? "You got a Lucky Drop" : "Lucky Drop Demo"}</button>` : ""}
+        ${isJoined && !isParticipating ? `<button class="cancel-reservation" id="cancel-reservation" type="button">Cancel</button>` : ""}
       </div>
     </div>
   `;
@@ -3380,7 +3479,7 @@ function updateJoinedCardState(id, animate = false, options = {}) {
   if (!card) return;
 
   const detail = challengeDetails[id];
-  const joined = Boolean(detail?.isJoined);
+  const joined = isChallengeEffectivelyJoined(id);
   updateChallengeCardMetrics(id, animate, options);
   card.classList.toggle("joined", joined);
   card.querySelector(".stamp-overlay")?.remove();
@@ -3389,8 +3488,8 @@ function updateJoinedCardState(id, animate = false, options = {}) {
 
   const stamp = document.createElement("img");
   stamp.className = `stamp-overlay${animate ? " stamp-animate" : ""}`;
-  stamp.src = "./assets/reserved-rialo-stamp.png";
-  stamp.alt = "Reserved Rialo stamp";
+  stamp.src = isParticipatingChallenge(id) ? "./assets/Stamp2.png" : "./assets/reserved-rialo-stamp.png";
+  stamp.alt = isParticipatingChallenge(id) ? "Participating Rialo stamp" : "Reserved Rialo stamp";
   stamp.setAttribute("aria-hidden", "true");
   card.appendChild(stamp);
 }
@@ -3445,6 +3544,7 @@ function clearWalletScopedReservations() {
     if (!detail?.isJoined) return;
 
     detail.isJoined = false;
+    detail.joinState = "";
     detail.joinedCount = Math.max(0, Number(detail.joinedCount ?? 0) - 1);
     updateJoinedCardState(id);
     if (id === selectedChallenge) clearedSelectedChallenge = true;
@@ -3453,6 +3553,125 @@ function clearWalletScopedReservations() {
   if (clearedSelectedChallenge) {
     renderSelectedChallenge(challengeDetails[selectedChallenge]);
   }
+  luckyAirDropShown.clear();
+  luckyAirDropSaved.clear();
+  luckyAirDropAnimating.clear();
+  latestLuckyAirDropId = "";
+}
+
+function isLuckyAirDropEligible(id) {
+  return luckyAirDropChallengeIds.has(id) && isParticipatingChallenge(id);
+}
+
+function openLuckyAirDrop(id) {
+  if (!luckyAirDropModal) return;
+  luckyAirDropModal.hidden = false;
+  luckyAirDropModal.classList.add("show");
+  window.setTimeout(closeLuckyAirDrop, 3300);
+}
+
+function closeLuckyAirDrop() {
+  if (!luckyAirDropModal) return;
+  luckyAirDropModal.hidden = true;
+  luckyAirDropModal.classList.remove("show");
+}
+
+function saveLuckyAirDrop(id) {
+  if (!luckyAirDropChallengeIds.has(id)) return;
+  luckyAirDropSaved.add(id);
+  latestLuckyAirDropId = id;
+  if (id === selectedChallenge) renderSelectedChallenge(challengeDetails[selectedChallenge]);
+}
+
+function setLuckyDropHistoryMode(isLuckyMode) {
+  const historyCard = document.querySelector("#activity .donation-history-card");
+  const donationTable = document.querySelector("#activity .donation-history-table:not(.lucky-drop-history-table)");
+  historyCard?.classList.toggle("lucky-drop-history-mode", isLuckyMode);
+  luckyDropsWalletCard?.classList.toggle("selected", isLuckyMode);
+  if (isLuckyMode) {
+    document.querySelectorAll("#activity [data-ngo-filter-card]").forEach((card) => card.classList.remove("selected"));
+  }
+  if (donationHistoryTitle) donationHistoryTitle.textContent = isLuckyMode ? "Lucky Drop History" : "Donation History";
+  if (donationHistorySubtitle) donationHistorySubtitle.textContent = isLuckyMode ? "Personal reward record" : "Personal giving record";
+  if (donationTable) donationTable.hidden = isLuckyMode;
+  if (luckyDropHistoryTable) luckyDropHistoryTable.hidden = !isLuckyMode;
+  if (isLuckyMode) {
+    luckyDropHistoryTable?.querySelectorAll("[data-lucky-drop-history]").forEach((row) => {
+      row.hidden = false;
+    });
+  }
+  if (luckyDropHistoryBack) luckyDropHistoryBack.hidden = !isLuckyMode;
+  const resetButton = document.querySelector("[data-ngo-filter-reset]");
+  if (resetButton) resetButton.hidden = isLuckyMode || activeDonationNgoFilter === "all";
+}
+
+function openLuckyDropsHistory() {
+  if (!walletConnected) {
+    setLuckyDropHistoryMode(false);
+    return;
+  }
+  setLuckyDropHistoryMode(true);
+  const historyCard = document.querySelector("#activity .donation-history-card");
+  historyCard?.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function openLuckyDropDetails(dropKey = "ecobottle") {
+  if (!luckyDropsWalletModal) return;
+  const details = luckyDropHistoryDetails[dropKey] || luckyDropHistoryDetails.ecobottle;
+  if (luckyDropsReward) luckyDropsReward.textContent = details.reward;
+  if (luckyDropsSource) luckyDropsSource.textContent = `From ${details.source}`;
+  if (luckyDropsDetailStatus) luckyDropsDetailStatus.textContent = `Status: ${details.status}`;
+  if (luckyDropsCode) luckyDropsCode.textContent = details.code;
+  if (luckyDropsValid) luckyDropsValid.textContent = details.valid;
+  if (luckyDropsBarcodeNumber) luckyDropsBarcodeNumber.textContent = details.barcode || "8 802 321 041 578";
+  if (luckyDropsProvider) luckyDropsProvider.textContent = details.provider;
+  const isUsed = details.status.toLowerCase() === "used";
+  luckyDropsWalletModal.classList.toggle("used-drop", isUsed);
+  if (luckyDropsUsedStamp) luckyDropsUsedStamp.hidden = !isUsed;
+  luckyDropsWalletModal.hidden = false;
+  luckyDropsWalletModal.classList.add("show");
+}
+
+function openLuckyDropsWallet(id = latestLuckyAirDropId || "run-100") {
+  const dropKey = id === "han-river-swim" ? "rungear" : "ecobottle";
+  openLuckyDropDetails(dropKey);
+}
+
+function closeLuckyDropsWallet() {
+  if (!luckyDropsWalletModal) return;
+  luckyDropsWalletModal.hidden = true;
+  luckyDropsWalletModal.classList.remove("show");
+}
+
+function highlightLuckyDropsWallet() {
+  if (!luckyDropsWalletCard) return;
+  luckyDropsWalletCard.scrollIntoView({ behavior: "smooth", block: "center" });
+  luckyDropsWalletCard.classList.remove("lucky-wallet-highlight");
+  void luckyDropsWalletCard.offsetWidth;
+  luckyDropsWalletCard.classList.add("lucky-wallet-highlight");
+  window.setTimeout(() => luckyDropsWalletCard.classList.remove("lucky-wallet-highlight"), 3000);
+}
+
+function goToLuckyDropsWallet() {
+  showPanel("activity");
+  window.setTimeout(highlightLuckyDropsWallet, 180);
+}
+
+function triggerLuckyAirDropDemo(id) {
+  if (!isLuckyAirDropEligible(id)) return;
+  if (luckyAirDropSaved.has(id)) {
+    goToLuckyDropsWallet();
+    return;
+  }
+  if (luckyAirDropAnimating.has(id)) return;
+
+  luckyAirDropAnimating.add(id);
+  openLuckyAirDrop(id);
+  window.setTimeout(() => {
+    luckyAirDropAnimating.delete(id);
+    luckyAirDropShown.add(id);
+    saveLuckyAirDrop(id);
+  }, 3300);
 }
 
 function triggerJoinSuccessEffects(id, previousJoinedCount) {
@@ -3461,6 +3680,7 @@ function triggerJoinSuccessEffects(id, previousJoinedCount) {
 
   const previousPool = previousJoinedCount * detail.entryAmount;
   detail.isJoined = true;
+  detail.joinState = getJoinStateForChallenge(detail);
   detail.joinedCount = Math.min(detail.maxParticipants, previousJoinedCount + 1);
 
   chargeSfsOperationFee(0.042, "SFS spent on donation commitment approval.");
@@ -3567,6 +3787,7 @@ async function completeJoinApproval() {
 async function cancelReservation() {
   const detail = challengeDetails[selectedChallenge];
   if (!detail?.isJoined) return;
+  if (detail.joinState === "participating") return;
 
   const cancelButton = document.querySelector("#cancel-reservation");
   if (cancelButton) {
@@ -3579,6 +3800,7 @@ async function cancelReservation() {
     await requestWalletSignature(buildPoolSignatureMessage(detail, "cancel"));
     const previousPool = detail.joinedCount * detail.entryAmount;
     detail.isJoined = false;
+    detail.joinState = "";
     detail.joinedCount = Math.max(0, detail.joinedCount - 1);
     chargeSfsOperationFee(0.028, "SFS spent on reservation cancellation.");
     updateJoinedCardState(selectedChallenge, true, { fromPool: previousPool });
@@ -3779,6 +4001,11 @@ function setWalletConnected(account, verified = false) {
   renderHistorySummary();
   if (!walletVerified) taxSetupState.editing = false;
   renderTaxSetupPanel();
+  updateAllJoinedCards();
+  renderSelectedChallenge(challengeDetails[selectedChallenge]);
+  if (!walletConnected) {
+    setLuckyDropHistoryMode(false);
+  }
   if (hadVerifiedWallet && !walletVerified) {
     clearWalletScopedReservations();
   }
@@ -4257,7 +4484,20 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const receiptProgramCell = event.target.closest("#activity .donation-history-table > div:not(.history-head) > span:first-child");
+  const luckyHistoryRow = event.target.closest("[data-lucky-drop-history]");
+  if (luckyHistoryRow) {
+    openLuckyDropDetails(luckyHistoryRow.dataset.luckyDropHistory);
+    return;
+  }
+
+  const luckyHistoryBackButton = event.target.closest("[data-lucky-history-back]");
+  if (luckyHistoryBackButton) {
+    setLuckyDropHistoryMode(false);
+    setDonationHistoryFilter(activeDonationNgoFilter);
+    return;
+  }
+
+  const receiptProgramCell = event.target.closest("#activity .donation-history-table:not(.lucky-drop-history-table) > div:not(.history-head) > span:first-child");
   if (receiptProgramCell) {
     openDonationReceiptPreview(receiptProgramCell.closest("[data-ngo-history-tags]"));
     return;
@@ -4277,12 +4517,17 @@ document.addEventListener("click", (event) => {
 
   const ngoCard = event.target.closest("#activity .receipt-card-grid .receipt-card");
   if (ngoCard) {
+    if (ngoCard.matches("[data-lucky-drops-wallet-card]")) {
+      openLuckyDropsHistory();
+      return;
+    }
     const addNgoCard = document.querySelector("[data-add-ngo-card]");
     if (ngoCard === addNgoCard && addNgoCard?.classList.contains("receipt-add-ngo")) {
       toggleAddNgoPicker(addNgoCard.getAttribute("aria-expanded") !== "true");
       return;
     }
     if (ngoCard.dataset.ngoFilterCard) {
+      setLuckyDropHistoryMode(false);
       setDonationHistoryFilter(ngoCard.dataset.ngoFilterCard);
       return;
     }
@@ -4300,14 +4545,27 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Enter" && event.key !== " ") return;
+  const luckyHistoryRow = event.target.closest("[data-lucky-drop-history]");
+  if (luckyHistoryRow) {
+    event.preventDefault();
+    openLuckyDropDetails(luckyHistoryRow.dataset.luckyDropHistory);
+    return;
+  }
   const card = event.target.closest("#activity .receipt-card-grid .receipt-card");
   if (!card) return;
   event.preventDefault();
+  if (card.matches("[data-lucky-drops-wallet-card]")) {
+    openLuckyDropsHistory();
+    return;
+  }
   if (card.matches("[data-add-ngo-card]") && card.classList.contains("receipt-add-ngo")) {
     toggleAddNgoPicker(card.getAttribute("aria-expanded") !== "true");
     return;
   }
-  if (card.dataset.ngoFilterCard) setDonationHistoryFilter(card.dataset.ngoFilterCard);
+  if (card.dataset.ngoFilterCard) {
+    setLuckyDropHistoryMode(false);
+    setDonationHistoryFilter(card.dataset.ngoFilterCard);
+  }
 });
 
 const provider = getInjectedWalletProvider();
@@ -4360,6 +4618,17 @@ sponsorStoreModal?.addEventListener("click", (event) => {
   if (event.target === sponsorStoreModal) closeSponsorStorePreview();
 });
 
+luckyAirDropModal?.addEventListener("click", (event) => {
+  if (event.target === luckyAirDropModal) closeLuckyAirDrop();
+});
+
+luckyDropsWalletModal?.addEventListener("click", (event) => {
+  if (event.target === luckyDropsWalletModal) closeLuckyDropsWallet();
+});
+
+luckyDropsWalletClose?.addEventListener("click", closeLuckyDropsWallet);
+closeLuckyDropsWalletButton?.addEventListener("click", closeLuckyDropsWallet);
+
 document.addEventListener("click", (event) => {
   const button = event.target.closest("[data-sponsor-url]");
   if (!button) return;
@@ -4370,6 +4639,16 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
+  const luckyStatusButton = event.target.closest("#open-lucky-drops-from-status");
+  if (luckyStatusButton) {
+    if (luckyAirDropSaved.has(selectedChallenge)) {
+      goToLuckyDropsWallet();
+    } else {
+      triggerLuckyAirDropDemo(selectedChallenge);
+    }
+    return;
+  }
+
   const button = event.target.closest("#cancel-reservation");
   if (!button) return;
   cancelReservation();
